@@ -9,7 +9,7 @@ Let's connect on Linkedin! [<img alt="Linkedin" src="https://img.shields.io/badg
 
 ## GitHub Stats &#x270d;
 
-[<img alt="arihazamie's GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=katherinedavenia&count_private=true&show_icons=true&theme=tokyonight">](#)
+[<img alt="arihazamie's GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=arihazamie&count_private=true&show_icons=true&theme=tokyonight">](#)
 
 ##
 
