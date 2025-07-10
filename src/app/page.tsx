@@ -1,103 +1,534 @@
-import Image from "next/image";
+"use client";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Globe,
+  ExternalLink,
+  Calendar,
+  User,
+  Briefcase,
+  Code,
+  GraduationCap,
+  Award,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { CertificateModal } from "../components/certificate-modal";
+import type { Certificate } from "../types/certificate";
 
-export default function Home() {
+const personalInfo = {
+  name: "Ari Hazamie",
+  title: "Full Stack Developer",
+  summary:
+    "Passionate developer dengan fokus pada pengembangan aplikasi web modern menggunakan teknologi terkini. Selalu antusias untuk mempelajari hal baru dan berkontribusi dalam proyek yang memberikan dampak positif.",
+  contact: {
+    email: "arihzmii@gmail.com",
+    location: "Jambi, Indonesia",
+    github: "github.com/arihazamie",
+    linkedin: "linkedin.com/in/arihazamie",
+  },
+};
+
+const skills = {
+  Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+  Backend: ["Node.js", "PostgreSQL"],
+  Tools: ["Git", "GitHub", "VS Code", "Vercel"],
+};
+
+// Certificate data with proper typing
+const certificates: Record<string, Certificate> = {
+  bangkit: {
+    id: "C497B4KY0622",
+    title: "Cloud Computing Certificate",
+    issuer: "Bangkit Academy led by Google, Tokopedia, Gojek & Traveloka",
+    issueDate: "January 2025",
+    credentialId: "C497B4KY0622",
+    imageUrl: "/Bangkit_Certificate.webp",
+    description:
+      "Sertifikat ini menunjukkan penyelesaian program Cloud Computing Learning Path di Bangkit Academy. Program ini mencakup pembelajaran mendalam tentang Google Cloud Platform, containerization, microservices, dan best practices dalam cloud computing.",
+    skills: [
+      "Google Cloud Platform",
+      "Docker",
+      "Kubernetes",
+      "Cloud Architecture",
+      "DevOps",
+      "Microservices",
+    ],
+  },
+};
+
+interface ExperienceItem {
+  title: string;
+  company: string;
+  period: string;
+  location: string;
+  type: string;
+  description: string[];
+  certificateId?: string;
+}
+
+const experience: ExperienceItem[] = [
+  {
+    title: "Cloud Computing Cohort",
+    company: "Bangkit Academy",
+    period: "2024 - 2025",
+    location: "Remote",
+    type: "Program Studi Independen",
+    description: [
+      "Peserta program studi independen bersertifikat Google, Gojek, Traveloka, Tokopedia",
+      "Fokus pada pengembangan talenta digital di bidang Cloud Computing",
+      "Mempelajari teknologi cloud computing dan best practices industry",
+    ],
+    certificateId: "bangkit",
+  },
+  // Add more experience here
+];
+
+interface ProjectItem {
+  title: string;
+  period: string;
+  description: string;
+  tech: string[];
+  link: string;
+  github: string;
+}
+
+const projects: ProjectItem[] = [
+  {
+    title: "Geopark Merangin",
+    period: "2025",
+    description:
+      "Website informatif untuk mempromosikan Geopark Merangin sebagai UNESCO Global Geopark dengan fitur destinasi wisata, acara, dan berita terkini.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Leaflet",
+      "Prisma",
+    ],
+    link: "geoparkmerangin.vercel.app",
+    github: "arihazamie/Geopark-Merangin",
+  },
+  // Add more projects here
+];
+
+interface EducationItem {
+  institution: string;
+  degree: string;
+  period: string;
+  description: string;
+}
+
+const education: EducationItem[] = [
+  {
+    institution: "Bangkit Academy",
+    degree: "Cloud Computing Learning Path",
+    period: "2024 - 2025",
+    description:
+      "Program studi independen bersertifikat dengan fokus Cloud Computing",
+  },
+  // Add more education here
+];
+
+// ===== COMPONENT =====
+export default function Component() {
+  const [selectedCertificate, setSelectedCertificate] =
+    useState<Certificate | null>(null);
+  const [isCertificateModalOpen, setIsCertificateModalOpen] = useState(false);
+
+  const openCertificateModal = (certificateId: string) => {
+    const certificate = certificates[certificateId];
+    if (certificate) {
+      setSelectedCertificate(certificate);
+      setIsCertificateModalOpen(true);
+    }
+  };
+
+  const fadeIn = {
+    initial: { opacity: 0, y: 15 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.4 },
+  };
+
+  const stagger = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20">
+      <div className="max-w-7xl mx-auto p-6">
+        {/* ===== HEADER SECTION ===== */}
+        <motion.div {...fadeIn}>
+          <Card className="mb-10 overflow-hidden border-0 shadow-xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 backdrop-blur-sm">
+            <CardContent className="p-8 xl:p-12 text-white relative">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12"></div>
+              <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+                <div className="mb-6 lg:mb-0 lg:flex-1">
+                  <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold mb-4 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent leading-tight">
+                    {personalInfo.name}
+                  </h1>
+                  <p className="text-xl lg:text-2xl xl:text-3xl text-blue-100 mb-6 font-medium">
+                    {personalInfo.title}
+                  </p>
+                  <p className="text-blue-100 max-w-3xl leading-relaxed opacity-90 lg:text-lg">
+                    {personalInfo.summary}
+                  </p>
+                </div>
+                <div className="lg:flex-shrink-0">
+                  <div className="flex flex-col space-y-4 text-sm lg:text-base backdrop-blur-sm bg-white/10 p-8 rounded-3xl border border-white/20 lg:min-w-[320px]">
+                    <a
+                      href={`mailto:${personalInfo.contact.email}`}
+                      className="flex items-center gap-4 hover:text-blue-200 transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      <Mail className="h-5 w-5 text-blue-200" />
+                      <span>{personalInfo.contact.email}</span>
+                    </a>
+                    <div className="flex items-center gap-4 hover:text-blue-200 transition-colors">
+                      <MapPin className="h-5 w-5 text-blue-200" />
+                      <span>{personalInfo.contact.location}</span>
+                    </div>
+                    <a
+                      href={`https://${personalInfo.contact.github}`}
+                      className="flex items-center gap-4 hover:text-blue-200 transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      <Github className="h-5 w-5 text-blue-200" />
+                      <span>{personalInfo.contact.github}</span>
+                    </a>
+                    <a
+                      href={`https://${personalInfo.contact.linkedin}`}
+                      className="flex items-center gap-4 hover:text-blue-200 transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      <Linkedin className="h-5 w-5 text-blue-200" />
+                      <span>{personalInfo.contact.linkedin}</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
+          {/* ===== LEFT COLUMN ===== */}
+          <div className="lg:col-span-8 space-y-10">
+            {/* Experience Section */}
+            <motion.div {...fadeIn}>
+              <Card className="shadow-lg border-0 backdrop-blur-sm bg-white/80 hover:shadow-xl transition-all duration-300">
+                <CardHeader className="pb-6 lg:pb-8 border-b border-gradient-to-r from-blue-100 to-transparent lg:px-8 lg:pt-8">
+                  <CardTitle className="text-2xl lg:text-3xl text-gray-900 flex items-center gap-4">
+                    <div className="p-3 lg:p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
+                      <Briefcase className="h-6 w-6 lg:h-7 lg:w-7 text-white" />
+                    </div>
+                    Pengalaman
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-8 lg:px-8 lg:pb-8">
+                  <motion.div
+                    variants={stagger}
+                    initial="initial"
+                    animate="animate"
+                    className="space-y-8">
+                    {experience.map((job, index) => (
+                      <motion.div
+                        key={index}
+                        variants={fadeIn}
+                        className="relative p-8 bg-gradient-to-r from-blue-50/50 to-transparent rounded-3xl border border-blue-100/50 hover:shadow-lg transition-all duration-300 group">
+                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
+                        <div className="flex flex-col xl:flex-row xl:justify-between xl:items-start mb-4">
+                          <div className="xl:flex-1">
+                            <h3 className="text-xl lg:text-2xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+                              {job.title}
+                            </h3>
+                            <p className="text-blue-600 font-medium text-lg mb-3">
+                              {job.company}
+                            </p>
+                          </div>
+                          <div className="flex flex-col xl:items-end gap-2 mt-3 xl:mt-0">
+                            <Badge className="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 border-0 px-4 py-2 xl:flex-shrink-0">
+                              {job.period}
+                            </Badge>
+                            <div className="flex items-center gap-2 text-sm text-gray-500 bg-white/60 px-3 py-2 rounded-full">
+                              <MapPin className="h-4 w-4" />
+                              <span>{job.location}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <Badge className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-0 shadow-sm px-4 py-2 mb-6">
+                          {job.type}
+                        </Badge>
+
+                        <ul className="space-y-3 text-gray-700 mb-6">
+                          {job.description.map((item, i) => (
+                            <li
+                              key={i}
+                              className="text-base leading-relaxed flex items-start gap-4">
+                              <div className="w-2.5 h-2.5 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+
+                        {job.certificateId && (
+                          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-blue-100/50">
+                            <Button
+                              onClick={() =>
+                                openCertificateModal(job.certificateId!)
+                              }
+                              className="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium">
+                              <Award className="h-5 w-5" />
+                              <span>Lihat Sertifikat</span>
+                            </Button>
+                            <div className="flex items-center gap-2 text-sm text-gray-600 bg-white/60 px-4 py-3 rounded-lg">
+                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                              <span>Sertifikat Tersedia</span>
+                            </div>
+                          </div>
+                        )}
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Projects Section */}
+            <motion.div {...fadeIn}>
+              <Card className="shadow-lg border-0 backdrop-blur-sm bg-white/80 hover:shadow-xl transition-all duration-300">
+                <CardHeader className="pb-6 lg:pb-8 border-b border-gradient-to-r from-blue-100 to-transparent lg:px-8 lg:pt-8">
+                  <CardTitle className="text-2xl lg:text-3xl text-gray-900 flex items-center gap-4">
+                    <div className="p-3 lg:p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
+                      <Code className="h-6 w-6 lg:h-7 lg:w-7 text-white" />
+                    </div>
+                    Proyek Unggulan
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-8 lg:px-8 lg:pb-8">
+                  <motion.div
+                    variants={stagger}
+                    initial="initial"
+                    animate="animate"
+                    className="space-y-8">
+                    {projects.map((project, index) => (
+                      <motion.div
+                        key={index}
+                        variants={fadeIn}
+                        className="relative p-8 bg-gradient-to-r from-blue-50/50 to-transparent rounded-3xl border border-blue-100/50 hover:shadow-lg transition-all duration-300 group">
+                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
+                        <div className="flex flex-col xl:flex-row xl:justify-between xl:items-start mb-4">
+                          <h3 className="text-xl lg:text-2xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors xl:flex-1">
+                            {project.title}
+                          </h3>
+                          <Badge className="mt-3 xl:mt-0 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 border-0 px-4 py-2 xl:flex-shrink-0">
+                            {project.period}
+                          </Badge>
+                        </div>
+                        <p className="text-gray-700 mb-6 leading-relaxed text-base lg:text-lg">
+                          {project.description}
+                        </p>
+                        <div className="flex flex-wrap gap-3 mb-6">
+                          {project.tech.map((tech) => (
+                            <Badge
+                              key={tech}
+                              variant="outline"
+                              className="text-sm border-blue-200 text-blue-600 bg-blue-50/50 hover:bg-blue-100 transition-colors px-3 py-1">
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
+                        <div className="flex flex-col lg:flex-row gap-4 text-base">
+                          <a
+                            href={`https://${project.link}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 text-blue-600 hover:text-blue-700 transition-colors">
+                            <Globe className="h-5 w-5" />
+                            <span>{project.link}</span>
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
+                          <a
+                            href={`https://github.com/${project.github}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 text-gray-600 hover:text-gray-700 transition-colors">
+                            <Github className="h-5 w-5" />
+                            <span>{project.github}</span>
+                          </a>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+
+          {/* ===== RIGHT COLUMN ===== */}
+          <div className="lg:col-span-4 space-y-8">
+            {/* Skills Section */}
+            <motion.div {...fadeIn}>
+              <Card className="shadow-lg border-0 backdrop-blur-sm bg-white/80 hover:shadow-xl transition-all duration-300 lg:sticky lg:top-6">
+                <CardHeader className="pb-6 border-b border-gradient-to-r from-blue-100 to-transparent">
+                  <CardTitle className="text-xl lg:text-2xl text-gray-900 flex items-center gap-3">
+                    <div className="p-2 lg:p-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
+                      <User className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                    </div>
+                    Keahlian
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <motion.div
+                    variants={stagger}
+                    initial="initial"
+                    animate="animate"
+                    className="space-y-8">
+                    {Object.entries(skills).map(([category, skillList]) => (
+                      <motion.div
+                        key={category}
+                        variants={fadeIn}>
+                        <h3 className="font-semibold text-gray-900 mb-4 text-blue-600 flex items-center gap-3 text-lg">
+                          <div
+                            className="w-3 h-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
+                            aria-hidden="true"></div>
+                          {category}
+                        </h3>
+                        <ul
+                          className="flex flex-wrap gap-2"
+                          role="list">
+                          {skillList.map((skill) => (
+                            <li
+                              key={skill}
+                              className="flex items-center gap-2 px-3 py-2 bg-blue-50/50 rounded-full hover:bg-blue-100/50 transition-colors border border-blue-100/30">
+                              <div
+                                className="w-2 h-2 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"
+                                aria-hidden="true"></div>
+                              <span className="text-gray-700 text-sm font-medium">
+                                {skill}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Education Section */}
+            <motion.div {...fadeIn}>
+              <Card className="shadow-lg border-0 backdrop-blur-sm bg-white/80 hover:shadow-xl transition-all duration-300">
+                <CardHeader className="pb-6 border-b border-gradient-to-r from-blue-100 to-transparent">
+                  <CardTitle className="text-xl lg:text-2xl text-gray-900 flex items-center gap-3">
+                    <div className="p-2 lg:p-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
+                      <GraduationCap className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                    </div>
+                    Pendidikan
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <div className="space-y-6">
+                    {education.map((edu, index) => (
+                      <div
+                        key={index}
+                        className="relative p-6 bg-gradient-to-r from-blue-50/50 to-transparent rounded-2xl border border-blue-100/50 hover:shadow-md transition-all duration-300">
+                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
+                        <h3 className="font-semibold text-gray-900 text-lg mb-2">
+                          {edu.institution}
+                        </h3>
+                        <p className="text-blue-600 font-medium mb-3">
+                          {edu.degree}
+                        </p>
+                        <div className="flex items-center gap-2 text-sm text-gray-500 bg-white/60 px-3 py-2 rounded-full w-fit">
+                          <Calendar className="h-4 w-4" />
+                          <span>{edu.period}</span>
+                        </div>
+                        {edu.description && (
+                          <p className="text-sm text-gray-600 mt-3 leading-relaxed">
+                            {edu.description}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Contact CTA */}
+            <motion.div {...fadeIn}>
+              <Card className="shadow-lg border-0 bg-gradient-to-r from-blue-500 to-blue-600 text-white overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-12 translate-x-12"></div>
+                <CardContent className="p-8 text-center relative z-10">
+                  <h3 className="font-semibold mb-3 text-lg">
+                    Mari Berkolaborasi
+                  </h3>
+                  <p className="text-blue-100 mb-6 opacity-90 leading-relaxed">
+                    Tertarik untuk bekerja sama? Jangan ragu untuk menghubungi
+                    saya.
+                  </p>
+                  <div className="flex justify-center gap-4">
+                    <a
+                      href={`mailto:${personalInfo.contact.email}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-4 bg-white/20 backdrop-blur-sm text-white rounded-2xl hover:bg-white/30 transition-all duration-300 cursor-pointer hover:scale-105">
+                      <Mail className="h-5 w-5" />
+                    </a>
+                    <a
+                      href={`https://${personalInfo.contact.linkedin}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-4 bg-white/20 backdrop-blur-sm text-white rounded-2xl hover:bg-white/30 transition-all duration-300 cursor-pointer hover:scale-105">
+                      <Linkedin className="h-5 w-5" />
+                    </a>
+                    <a
+                      href={`https://${personalInfo.contact.github}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-4 bg-white/20 backdrop-blur-sm text-white rounded-2xl hover:bg-white/30 transition-all duration-300 cursor-pointer hover:scale-105">
+                      <Github className="h-5 w-5" />
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Footer */}
+        <motion.footer
+          className="text-center pt-12 mt-12"
+          {...fadeIn}>
+          <div className="inline-block px-8 py-4 bg-white/60 backdrop-blur-sm rounded-full border border-blue-100/50">
+            <p className="text-gray-500">
+              Dibuat dengan ❤️ menggunakan Next.js dan Tailwind CSS
+            </p>
+          </div>
+        </motion.footer>
+      </div>
+
+      {/* Certificate Modal */}
+      <CertificateModal
+        certificate={selectedCertificate}
+        isOpen={isCertificateModalOpen}
+        onClose={() => setIsCertificateModalOpen(false)}
+      />
     </div>
   );
 }
