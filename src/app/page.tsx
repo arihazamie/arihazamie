@@ -1,7 +1,6 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Github,
   Linkedin,
@@ -14,12 +13,11 @@ import {
   Briefcase,
   Code,
   GraduationCap,
-  Award,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { CertificateModal } from "../components/certificate-modal";
 import type { Certificate } from "../types/certificate";
+import Image from "next/image";
+import Link from "next/link";
 
 const personalInfo = {
   name: "Ari Hazamie",
@@ -49,16 +47,30 @@ const certificates: Record<string, Certificate> = {
     issueDate: "January 2025",
     credentialId: "C497B4KY0622",
     imageUrl: "/Bangkit_Certificate.webp",
-    description:
-      "Sertifikat ini menunjukkan penyelesaian program Cloud Computing Learning Path di Bangkit Academy. Program ini mencakup pembelajaran mendalam tentang Google Cloud Platform, containerization, microservices, dan best practices dalam cloud computing.",
-    skills: [
-      "Google Cloud Platform",
-      "Docker",
-      "Kubernetes",
-      "Cloud Architecture",
-      "DevOps",
-      "Microservices",
-    ],
+  },
+  metaFullStack: {
+    id: "KL5UGUJFYKKG",
+    title: "The Full Stack",
+    issuer: "Meta (via Coursera)",
+    issueDate: "September 18, 2023",
+    credentialId: "KL5UGUJFYKKG",
+    imageUrl: "/The_Full_Stack.webp",
+  },
+  jhuWebDevelopers: {
+    id: "MVQY74QDQ53C",
+    title: "HTML, CSS, and Javascript for Web Developers",
+    issuer: "Johns Hopkins University (via Coursera)",
+    issueDate: "October 7, 2023",
+    credentialId: "MVQY74QDQ53C",
+    imageUrl: "/Web_Developers.webp",
+  },
+  ibmWebDevelopment: {
+    id: "CDHRFUYS9YQ",
+    title: "Introduction to Web Development with HTML, CSS, JavaScript",
+    issuer: "IBM (via Coursera)",
+    issueDate: "September 22, 2023",
+    credentialId: "CDHRFUYS9YQ",
+    imageUrl: "/Web_Development.webp",
   },
 };
 
@@ -112,8 +124,24 @@ const projects: ProjectItem[] = [
       "Leaflet",
       "Prisma",
     ],
-    link: "geoparkmerangin.vercel.app",
+    link: "geopark.arihazamie.my.id",
     github: "arihazamie/Geopark-Merangin",
+  },
+  {
+    title: "LPPM UPI YPTK Padang",
+    period: "2025",
+    description:
+      "Website informatif untuk mempromosikan Geopark Merangin sebagai UNESCO Global Geopark dengan fitur destinasi wisata, acara, dan berita terkini.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Next-Auth",
+      "Prisma",
+    ],
+    link: "lppm.arihazamie.my.id",
+    github: "",
   },
   // Add more projects here
 ];
@@ -127,29 +155,17 @@ interface EducationItem {
 
 const education: EducationItem[] = [
   {
-    institution: "Bangkit Academy",
-    degree: "Cloud Computing Learning Path",
-    period: "2024 - 2025",
+    institution: "Universitas Putra Indonesia YPTK Padang",
+    degree: "Sistem Informasi",
+    period: "2021 - 2025",
     description:
-      "Program studi independen bersertifikat dengan fokus Cloud Computing",
+      "Undergraduate  Program Studi Sistem Informasi UPI YPTK Padang",
   },
   // Add more education here
 ];
 
 // ===== COMPONENT =====
 export default function Component() {
-  const [selectedCertificate, setSelectedCertificate] =
-    useState<Certificate | null>(null);
-  const [isCertificateModalOpen, setIsCertificateModalOpen] = useState(false);
-
-  const openCertificateModal = (certificateId: string) => {
-    const certificate = certificates[certificateId];
-    if (certificate) {
-      setSelectedCertificate(certificate);
-      setIsCertificateModalOpen(true);
-    }
-  };
-
   const fadeIn = {
     initial: { opacity: 0, y: 15 },
     animate: { opacity: 1, y: 0 },
@@ -283,23 +299,6 @@ export default function Component() {
                             </li>
                           ))}
                         </ul>
-
-                        {job.certificateId && (
-                          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-blue-100/50">
-                            <Button
-                              onClick={() =>
-                                openCertificateModal(job.certificateId!)
-                              }
-                              className="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium">
-                              <Award className="h-5 w-5" />
-                              <span>Lihat Sertifikat</span>
-                            </Button>
-                            <div className="flex items-center gap-2 text-sm text-gray-600 bg-white/60 px-4 py-3 rounded-lg">
-                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                              <span>Sertifikat Tersedia</span>
-                            </div>
-                          </div>
-                        )}
                       </motion.div>
                     ))}
                   </motion.div>
@@ -376,6 +375,83 @@ export default function Component() {
                 </CardContent>
               </Card>
             </motion.div>
+
+            {/* Certificates Section */}
+            <motion.div {...fadeIn}>
+              <Card className="shadow-lg border-0 backdrop-blur-sm bg-white/80 hover:shadow-xl transition-all duration-300">
+                <CardHeader className="pb-6 lg:pb-8 border-b border-gradient-to-r from-blue-100 to-transparent lg:px-8 lg:pt-8">
+                  <CardTitle className="text-2xl lg:text-3xl text-gray-900 flex items-center gap-4">
+                    <div className="p-3 lg:p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
+                      <GraduationCap className="h-6 w-6 lg:h-7 lg:w-7 text-white" />
+                    </div>
+                    Sertifikat
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-8 lg:px-8 lg:pb-8">
+                  <motion.div
+                    variants={stagger}
+                    initial="initial"
+                    animate="animate"
+                    className="space-y-8">
+                    {Object.values(certificates).map((certificate) => (
+                      <motion.div
+                        key={certificate.id}
+                        variants={fadeIn}
+                        className="relative p-8 bg-gradient-to-r from-blue-50/50 to-transparent rounded-3xl border border-blue-100/50 hover:shadow-lg transition-all duration-300 group">
+                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
+
+                        <div className="flex flex-col xl:flex-row xl:gap-8">
+                          {/* Certificate Image */}
+                          <div className="xl:w-1/3 mb-6 xl:mb-0">
+                            <div className="relative overflow-hidden rounded-md shadow-lg group-hover:shadow-xl transition-all duration-300">
+                              <Image
+                                src={certificate.imageUrl || "/placeholder.svg"}
+                                alt={`${certificate.title} Certificate`}
+                                width={500}
+                                height={500}
+                                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                          </div>
+
+                          {/* Certificate Details */}
+                          <div className="xl:w-2/3">
+                            <div className="flex flex-col xl:flex-row xl:justify-between xl:items-start mb-4">
+                              <div className="xl:flex-1">
+                                <h3 className="text-xl lg:text-2xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+                                  {certificate.title}
+                                </h3>
+                                <p className="text-blue-600 font-medium text-lg mb-3">
+                                  {certificate.issuer}
+                                </p>
+                              </div>
+                              <div className="flex flex-col xl:items-end gap-2 mt-3 xl:mt-0">
+                                <Badge className="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 border-0 px-4 py-2 xl:flex-shrink-0">
+                                  {certificate.issueDate}
+                                </Badge>
+                                <div className="flex items-center gap-2 text-sm text-gray-500 bg-white/60 px-3 py-2 rounded-full">
+                                  <span className="font-medium">ID:</span>
+                                  <span className="font-mono">
+                                    {certificate.credentialId}
+                                  </span>
+                                </div>
+                                <Link
+                                  href={certificate.imageUrl}
+                                  target="_blank"
+                                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl">
+                                  Buka
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
 
           {/* ===== RIGHT COLUMN ===== */}
@@ -401,7 +477,7 @@ export default function Component() {
                       <motion.div
                         key={category}
                         variants={fadeIn}>
-                        <h3 className="font-semibold text-gray-900 mb-4 text-blue-600 flex items-center gap-3 text-lg">
+                        <h3 className="font-semibold  mb-4 text-blue-600 flex items-center gap-3 text-lg">
                           <div
                             className="w-3 h-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
                             aria-hidden="true"></div>
@@ -522,13 +598,6 @@ export default function Component() {
           </div>
         </motion.footer>
       </div>
-
-      {/* Certificate Modal */}
-      <CertificateModal
-        certificate={selectedCertificate}
-        isOpen={isCertificateModalOpen}
-        onClose={() => setIsCertificateModalOpen(false)}
-      />
     </div>
   );
 }

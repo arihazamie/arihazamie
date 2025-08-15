@@ -5,8 +5,6 @@ export interface Certificate {
   issueDate: string;
   credentialId?: string;
   imageUrl: string;
-  description: string;
-  skills: string[];
 }
 
 export interface CertificateModalProps {
