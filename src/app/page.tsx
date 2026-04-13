@@ -1,603 +1,417 @@
 "use client";
+
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Github,
   Linkedin,
   Mail,
   MapPin,
-  Globe,
   ExternalLink,
-  Calendar,
-  User,
+  ArrowUpRight,
+  Terminal,
+  Database,
+  Cloud,
   Briefcase,
-  Code,
   GraduationCap,
+  ChevronRight
 } from "lucide-react";
 import { motion } from "framer-motion";
-import type { Certificate } from "../types/certificate";
 import Image from "next/image";
 import Link from "next/link";
 
+// ==========================================
+// DATA FROM CV (English Version)
+// ==========================================
 const personalInfo = {
   name: "Ari Hazamie",
-  title: "Full Stack Developer",
+  title: "Backend Developer & Cloud Architecture",
   summary:
-    "Passionate developer dengan fokus pada pengembangan aplikasi web modern menggunakan teknologi terkini. Selalu antusias untuk mempelajari hal baru dan berkontribusi dalam proyek yang memberikan dampak positif.",
+    "Information Systems graduate with a focus on backend development, cloud computing, and data-driven systems. Experienced in building RESTful APIs, managing PostgreSQL databases, and developing scalable cloud-based systems through team-based projects.",
   contact: {
-    email: "arihzmii@gmail.com",
-    location: "Jambi, Indonesia",
+    email: "arihzmiutama@gmail.com",
+    location: "Merangin, Jambi",
     github: "github.com/arihazamie",
     linkedin: "linkedin.com/in/arihazamie",
   },
 };
 
-const skills = {
-  Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-  Backend: ["Node.js", "PostgreSQL"],
-  Tools: ["Git", "GitHub", "VS Code", "Vercel"],
-};
-
-// Certificate data with proper typing
-const certificates: Record<string, Certificate> = {
-  bangkit: {
-    id: "C497B4KY0622",
-    title: "Cloud Computing Certificate",
-    issuer: "Bangkit Academy led by Google, Tokopedia, Gojek & Traveloka",
-    issueDate: "January 2025",
-    credentialId: "C497B4KY0622",
-    imageUrl: "/Bangkit_Certificate.webp",
-  },
-  metaFullStack: {
-    id: "KL5UGUJFYKKG",
-    title: "The Full Stack",
-    issuer: "Meta (via Coursera)",
-    issueDate: "September 18, 2023",
-    credentialId: "KL5UGUJFYKKG",
-    imageUrl: "/The_Full_Stack.webp",
-  },
-  jhuWebDevelopers: {
-    id: "MVQY74QDQ53C",
-    title: "HTML, CSS, and Javascript for Web Developers",
-    issuer: "Johns Hopkins University (via Coursera)",
-    issueDate: "October 7, 2023",
-    credentialId: "MVQY74QDQ53C",
-    imageUrl: "/Web_Developers.webp",
-  },
-  ibmWebDevelopment: {
-    id: "CDHRFUYS9YQ",
-    title: "Introduction to Web Development with HTML, CSS, JavaScript",
-    issuer: "IBM (via Coursera)",
-    issueDate: "September 22, 2023",
-    credentialId: "CDHRFUYS9YQ",
-    imageUrl: "/Web_Development.webp",
-  },
-};
-
-interface ExperienceItem {
-  title: string;
-  company: string;
-  period: string;
-  location: string;
-  type: string;
-  description: string[];
-  certificateId?: string;
-}
-
-const experience: ExperienceItem[] = [
+const experience = [
   {
-    title: "Cloud Computing Cohort",
-    company: "Bangkit Academy",
-    period: "2024 - 2025",
-    location: "Remote",
-    type: "Program Studi Independen",
+    title: "Head of Finance Affairs",
+    company: "Sungai Jering Village Office",
+    period: "Oct 2025 - Apr 2026",
+    location: "Jambi, Indonesia",
     description: [
-      "Peserta program studi independen bersertifikat Google, Gojek, Traveloka, Tokopedia",
-      "Fokus pada pengembangan talenta digital di bidang Cloud Computing",
-      "Mempelajari teknologi cloud computing dan best practices industry",
+      "Managed the withdrawal and disbursement of village funds through the banking system every three months, with transaction amounts ranging from Rp100 million to Rp250 million",
+      "Ensured the smooth and timely distribution of salaries to 9 village officials and 5 members of the Village Council (BPD), as well as village staff and institutions.",
+      "Prepared systematic financial accountability reports to support transparency and accountability in the management of village funds.",
+      "Managed the administration of the Village Budget (APBDes), including the accurate and timely entry of data and printing of budget documents."
     ],
-    certificateId: "bangkit",
   },
-  // Add more experience here
 ];
 
-interface ProjectItem {
-  title: string;
-  period: string;
-  description: string;
-  tech: string[];
-  link: string;
-  github: string;
-}
-
-const projects: ProjectItem[] = [
+const projects = [
   {
-    title: "Geopark Merangin",
-    period: "2025",
-    description:
-      "Website informatif untuk mempromosikan Geopark Merangin sebagai UNESCO Global Geopark dengan fitur destinasi wisata, acara, dan berita terkini.",
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "PostgreSQL",
-      "Tailwind CSS",
-      "Leaflet",
-      "Prisma",
+    title: "Eco Sense Smart Environment",
+    role: "Cloud Computing Lead",
+    period: "Nov 2024 - Dec 2024",
+    description: [
+      "Led the design and implementation of cloud architecture for geospatial environmental data processing systems.",
+      "Developed RESTful APIs (Flask) and satellite image processing pipelines (GeoTIFF), as well as ML model integrations (Random Forest, K-Means).",
+      "Managed data storage and distribution using Firebase Storage and Firestore, and deployed the backend using Gunicorn, collaborating across teams to deliver a scalable end-to-end system."
     ],
-    link: "geopark.arihazamie.my.id",
-    github: "arihazamie/Geopark-Merangin",
+    tech: ["Python", "Flask", "TensorFlow", "TensorFlow Decision Forests", "Firebase", "Gunicorn", "Numpy", "Pandas"],
+    link: "github.com/arihazamie/EcoSense",
   },
   {
-    title: "LPPM UPI YPTK Padang",
-    period: "2025",
-    description:
-      "Website informatif untuk mempromosikan Geopark Merangin sebagai UNESCO Global Geopark dengan fitur destinasi wisata, acara, dan berita terkini.",
-    tech: [
-      "Next.js",
-      "TypeScript",
-      "PostgreSQL",
-      "Tailwind CSS",
-      "Next-Auth",
-      "Prisma",
+    title: "LPPM Research Management",
+    role: "Full Stack Web Developer",
+    period: "May 2025 - Oct 2025",
+    description: [
+      "Developed a web-based research and community service management system with a role-based architecture (Admin and Faculty) and an approval workflow.",
+      "Built a RESTful API, managed a database using PostgreSQL and Prisma ORM, and implemented JWT-based authentication using NextAuth.js.",
+      "Integrated data export features to Excel, input validation using Zod, and security measures including role-based protection middleware, password hashing, and user data isolation."
     ],
+    tech: ["Next.js", "PostgreSQL", "TypeScript", "Tailwind CSS", "Prisma ORM", "JWT"],
     link: "lppm.arihazamie.my.id",
-    github: "",
   },
-  // Add more projects here
+  {
+    title: "Geopark Merangin Information System",
+    role: "Full Stack Web Developer",
+    period: "Feb 2025 - Oct 2025",
+    description: [
+      "Developed a web-based tourism information system by building a RESTful API and managing location and environmental data using PostgreSQL.",
+      "Used Next.js and TypeScript for application development and deployed the system via Vercel to ensure fast and stable access",
+      "Created a system capable of presenting information in a structured manner and supporting efficient data access."
+    ],
+    tech: ["Next.js", "PostgreSQL", "TypeScript", "Tailwind CSS", "Prisma ORM", "Vercel"],
+    link: "geopark.arihazamie.my.id",
+  },
 ];
 
-interface EducationItem {
-  institution: string;
-  degree: string;
-  period: string;
-  description: string;
-}
+const skills = [
+  {
+    category: "Cloud & Backend",
+    icon: <Cloud className="w-5 h-5" />,
+    items: ["GCP", "Cloud Run", "Node.js", "Python", "Flask", "REST API"],
+  },
+  {
+    category: "Database",
+    icon: <Database className="w-5 h-5" />,
+    items: ["PostgreSQL", "SQL", "Prisma ORM", "Firebase"],
+  },
+  {
+    category: "Web Frontend",
+    icon: <Terminal className="w-5 h-5" />,
+    items: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+  },
+];
 
-const education: EducationItem[] = [
+const education = [
   {
     institution: "Universitas Putra Indonesia YPTK Padang",
-    degree: "Sistem Informasi",
-    period: "2021 - 2025",
-    description:
-      "Undergraduate  Program Studi Sistem Informasi UPI YPTK Padang",
+    location: "Padang, West Sumatra",
+    degree: "Bachelor of Information Systems",
+    period: "Aug 2021 - Oct 2025",
+    description: [
+      "Strengthened skills in system development, data management, and problem-solving through a combination of academic study and practical projects throughout the program."
+    ]
   },
-  // Add more education here
+  {
+    institution: "Bangkit Academy (by Google, GoTo, Traveloka) - MSIB Program",
+    location: "Remote (Online)",
+    degree: "Cloud Computing Learning Path",
+    period: "Sep 2024 - Dec 2024",
+    description: [
+      "Completed an industry-focused intensive program centered on cloud computing, backend development, and DevOps practices using Google Cloud Platform. Developed RESTful APIs, deployed applications using Cloud Run, and managed cloud-based databases in a team-based capstone project."
+    ]
+  },
 ];
 
-// ===== COMPONENT =====
-export default function Component() {
-  const fadeIn = {
-    initial: { opacity: 0, y: 15 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.4 },
-  };
+const certificate = {
+  title: "Cloud Computing Certificate",
+  issuer: "Bangkit Academy",
+  id: "C497B4KY0622",
+  imageUrl: "/Bangkit_Certificate.webp",
+};
 
-  const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+// ==========================================
+// COMPONENT
+// ==========================================
+export default function DarkBentoPortfolio() {
+  const fadeUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5, ease: "easeOut" },
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20">
-      <div className="max-w-7xl mx-auto p-6">
-        {/* ===== HEADER SECTION ===== */}
-        <motion.div {...fadeIn}>
-          <Card className="mb-10 overflow-hidden border-0 shadow-xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 backdrop-blur-sm">
-            <CardContent className="p-8 xl:p-12 text-white relative">
-              {/* Decorative elements */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12"></div>
-              <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-                <div className="mb-6 lg:mb-0 lg:flex-1">
-                  <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold mb-4 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent leading-tight">
-                    {personalInfo.name}
-                  </h1>
-                  <p className="text-xl lg:text-2xl xl:text-3xl text-blue-100 mb-6 font-medium">
-                    {personalInfo.title}
-                  </p>
-                  <p className="text-blue-100 max-w-3xl leading-relaxed opacity-90 lg:text-lg">
-                    {personalInfo.summary}
-                  </p>
-                </div>
-                <div className="lg:flex-shrink-0">
-                  <div className="flex flex-col space-y-4 text-sm lg:text-base backdrop-blur-sm bg-white/10 p-8 rounded-3xl border border-white/20 lg:min-w-[320px]">
-                    <a
-                      href={`mailto:${personalInfo.contact.email}`}
-                      className="flex items-center gap-4 hover:text-blue-200 transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      <Mail className="h-5 w-5 text-blue-200" />
-                      <span>{personalInfo.contact.email}</span>
-                    </a>
-                    <div className="flex items-center gap-4 hover:text-blue-200 transition-colors">
-                      <MapPin className="h-5 w-5 text-blue-200" />
-                      <span>{personalInfo.contact.location}</span>
-                    </div>
-                    <a
-                      href={`https://${personalInfo.contact.github}`}
-                      className="flex items-center gap-4 hover:text-blue-200 transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      <Github className="h-5 w-5 text-blue-200" />
-                      <span>{personalInfo.contact.github}</span>
-                    </a>
-                    <a
-                      href={`https://${personalInfo.contact.linkedin}`}
-                      className="flex items-center gap-4 hover:text-blue-200 transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      <Linkedin className="h-5 w-5 text-blue-200" />
-                      <span>{personalInfo.contact.linkedin}</span>
-                    </a>
-                  </div>
-                </div>
+    <div className="min-h-screen bg-[#0a0a0a] text-zinc-300 selection:bg-[#ccff00] selection:text-black font-sans overflow-x-hidden">
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-24">
+
+        {/* ===== BENTO GRID ===== */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+
+          {/* 1. HERO SECTION (Spans 8 columns) */}
+          <motion.section
+            className="md:col-span-8 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-12 flex flex-col justify-center relative overflow-hidden group"
+            initial="initial" animate="animate" variants={fadeUp}
+          >
+            {/* Subtle glow effect */}
+            <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-[#ccff00]/5 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none"></div>
+
+            <Badge className="w-fit mb-6 px-4 py-1.5 bg-[#1a1a1a] border-[#333] text-zinc-300 rounded-full text-sm">
+              <span className="w-2 h-2 rounded-full bg-[#ccff00] mr-2 animate-pulse"></span>
+              Available for work
+            </Badge>
+
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+              Backend systems & <br />
+              <span className="text-[#ccff00]">cloud architecture.</span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-10 text-justify">
+              I'm <strong className="text-white">{personalInfo.name}</strong>. {personalInfo.summary}
+            </p>
+
+            <div className="flex flex-wrap gap-4 mt-auto">
+              <a href={`mailto:${personalInfo.contact.email}`} className="px-6 py-3 bg-[#ccff00] text-black font-bold rounded-xl hover:bg-[#b3e600] transition-colors flex items-center gap-2">
+                <Mail className="w-5 h-5" /> Let's Connect
+              </a>
+              <div className="px-6 py-3 bg-[#1a1a1a] border border-[#262626] text-zinc-300 font-medium rounded-xl flex items-center gap-2">
+                <MapPin className="w-5 h-5 text-[#ccff00]" /> {personalInfo.contact.location}
               </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+            </div>
+          </motion.section>
 
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
-          {/* ===== LEFT COLUMN ===== */}
-          <div className="lg:col-span-8 space-y-10">
-            {/* Experience Section */}
-            <motion.div {...fadeIn}>
-              <Card className="shadow-lg border-0 backdrop-blur-sm bg-white/80 hover:shadow-xl transition-all duration-300">
-                <CardHeader className="pb-6 lg:pb-8 border-b border-gradient-to-r from-blue-100 to-transparent lg:px-8 lg:pt-8">
-                  <CardTitle className="text-2xl lg:text-3xl text-gray-900 flex items-center gap-4">
-                    <div className="p-3 lg:p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
-                      <Briefcase className="h-6 w-6 lg:h-7 lg:w-7 text-white" />
-                    </div>
-                    Pengalaman
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-8 lg:px-8 lg:pb-8">
-                  <motion.div
-                    variants={stagger}
-                    initial="initial"
-                    animate="animate"
-                    className="space-y-8">
-                    {experience.map((job, index) => (
-                      <motion.div
-                        key={index}
-                        variants={fadeIn}
-                        className="relative p-8 bg-gradient-to-r from-blue-50/50 to-transparent rounded-3xl border border-blue-100/50 hover:shadow-lg transition-all duration-300 group">
-                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
-                        <div className="flex flex-col xl:flex-row xl:justify-between xl:items-start mb-4">
-                          <div className="xl:flex-1">
-                            <h3 className="text-xl lg:text-2xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
-                              {job.title}
-                            </h3>
-                            <p className="text-blue-600 font-medium text-lg mb-3">
-                              {job.company}
-                            </p>
-                          </div>
-                          <div className="flex flex-col xl:items-end gap-2 mt-3 xl:mt-0">
-                            <Badge className="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 border-0 px-4 py-2 xl:flex-shrink-0">
-                              {job.period}
-                            </Badge>
-                            <div className="flex items-center gap-2 text-sm text-gray-500 bg-white/60 px-3 py-2 rounded-full">
-                              <MapPin className="h-4 w-4" />
-                              <span>{job.location}</span>
-                            </div>
-                          </div>
-                        </div>
+          {/* 2. SOCIALS & QUICK CONTACT (Spans 4 columns) */}
+          <motion.section
+            className="md:col-span-4 flex flex-col gap-4 md:gap-6"
+            initial="initial" animate="animate" variants={fadeUp}
+          >
+            <div className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 flex-1 flex flex-col justify-center relative group overflow-hidden hover:border-[#333] transition-colors">
+              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <Terminal className="w-5 h-5 text-[#ccff00]" /> Social Profiles
+              </h3>
+              <div className="space-y-3">
+                <a href={`https://${personalInfo.contact.github}`} target="_blank" className="flex items-center justify-between p-4 bg-[#1a1a1a] border border-[#262626] rounded-xl hover:bg-[#222] transition-colors group/link">
+                  <div className="flex items-center gap-3 text-white font-medium">
+                    <Github className="w-5 h-5" /> GitHub
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover/link:text-[#ccff00] transition-colors" />
+                </a>
+                <a href={`https://${personalInfo.contact.linkedin}`} target="_blank" className="flex items-center justify-between p-4 bg-[#1a1a1a] border border-[#262626] rounded-xl hover:bg-[#222] transition-colors group/link">
+                  <div className="flex items-center gap-3 text-white font-medium">
+                    <Linkedin className="w-5 h-5" /> LinkedIn
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover/link:text-[#ccff00] transition-colors" />
+                </a>
+              </div>
+            </div>
 
-                        <Badge className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-0 shadow-sm px-4 py-2 mb-6">
-                          {job.type}
-                        </Badge>
+            <div className="bg-[#ccff00] rounded-[2rem] p-8 text-black flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+              <h3 className="text-2xl font-bold leading-tight mb-4">Have a project <br /> in mind?</h3>
+              <a href={`mailto:${personalInfo.contact.email}`} className="inline-flex items-center gap-2 font-bold text-lg">
+                Email Me <ArrowUpRight className="w-5 h-5" />
+              </a>
+            </div>
+          </motion.section>
 
-                        <ul className="space-y-3 text-gray-700 mb-6">
-                          {job.description.map((item, i) => (
-                            <li
-                              key={i}
-                              className="text-base leading-relaxed flex items-start gap-4">
-                              <div className="w-2.5 h-2.5 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </CardContent>
-              </Card>
-            </motion.div>
+          {/* 3. EXPERIENCE & EDUCATION (Spans 5 columns) */}
+          <div className="md:col-span-5 flex flex-col gap-4 md:gap-6">
+            <motion.section
+              className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10"
+              initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
+            >
+              <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                <Briefcase className="w-6 h-6 text-[#ccff00]" /> Experience
+              </h2>
+              <div className="space-y-8">
+                {experience.map((exp, i) => (
+                  <div key={i} className="relative pl-6 border-l border-[#262626]">
+                    <div className="absolute w-3 h-3 bg-[#121212] border-2 border-[#ccff00] rounded-full -left-[6.5px] top-1.5"></div>
+                    <h3 className="text-xl font-bold text-white mb-1">{exp.title}</h3>
+                    <p className="text-[#ccff00] font-medium text-sm mb-3">{exp.company}</p>
+                    <span className="inline-block px-3 py-1 bg-[#1a1a1a] border border-[#262626] rounded-md text-xs font-medium text-zinc-400 mb-4">
+                      {exp.period}
+                    </span>
+                    <ul className="space-y-2">
+                      {exp.description.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+                          <ChevronRight className="w-4 h-4 text-[#ccff00] shrink-0 mt-0.5" />
+                          <span className="flex-1 text-justify">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </motion.section>
 
-            {/* Projects Section */}
-            <motion.div {...fadeIn}>
-              <Card className="shadow-lg border-0 backdrop-blur-sm bg-white/80 hover:shadow-xl transition-all duration-300">
-                <CardHeader className="pb-6 lg:pb-8 border-b border-gradient-to-r from-blue-100 to-transparent lg:px-8 lg:pt-8">
-                  <CardTitle className="text-2xl lg:text-3xl text-gray-900 flex items-center gap-4">
-                    <div className="p-3 lg:p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
-                      <Code className="h-6 w-6 lg:h-7 lg:w-7 text-white" />
-                    </div>
-                    Proyek Unggulan
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-8 lg:px-8 lg:pb-8">
-                  <motion.div
-                    variants={stagger}
-                    initial="initial"
-                    animate="animate"
-                    className="space-y-8">
-                    {projects.map((project, index) => (
-                      <motion.div
-                        key={index}
-                        variants={fadeIn}
-                        className="relative p-8 bg-gradient-to-r from-blue-50/50 to-transparent rounded-3xl border border-blue-100/50 hover:shadow-lg transition-all duration-300 group">
-                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
-                        <div className="flex flex-col xl:flex-row xl:justify-between xl:items-start mb-4">
-                          <h3 className="text-xl lg:text-2xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors xl:flex-1">
-                            {project.title}
-                          </h3>
-                          <Badge className="mt-3 xl:mt-0 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 border-0 px-4 py-2 xl:flex-shrink-0">
-                            {project.period}
-                          </Badge>
-                        </div>
-                        <p className="text-gray-700 mb-6 leading-relaxed text-base lg:text-lg">
-                          {project.description}
-                        </p>
-                        <div className="flex flex-wrap gap-3 mb-6">
-                          {project.tech.map((tech) => (
-                            <Badge
-                              key={tech}
-                              variant="outline"
-                              className="text-sm border-blue-200 text-blue-600 bg-blue-50/50 hover:bg-blue-100 transition-colors px-3 py-1">
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
-                        <div className="flex flex-col lg:flex-row gap-4 text-base">
-                          <a
-                            href={`https://${project.link}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 text-blue-600 hover:text-blue-700 transition-colors">
-                            <Globe className="h-5 w-5" />
-                            <span>{project.link}</span>
-                            <ExternalLink className="h-4 w-4" />
-                          </a>
-                          <a
-                            href={`https://github.com/${project.github}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 text-gray-600 hover:text-gray-700 transition-colors">
-                            <Github className="h-5 w-5" />
-                            <span>{project.github}</span>
-                          </a>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Certificates Section */}
-            <motion.div {...fadeIn}>
-              <Card className="shadow-lg border-0 backdrop-blur-sm bg-white/80 hover:shadow-xl transition-all duration-300">
-                <CardHeader className="pb-6 lg:pb-8 border-b border-gradient-to-r from-blue-100 to-transparent lg:px-8 lg:pt-8">
-                  <CardTitle className="text-2xl lg:text-3xl text-gray-900 flex items-center gap-4">
-                    <div className="p-3 lg:p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
-                      <GraduationCap className="h-6 w-6 lg:h-7 lg:w-7 text-white" />
-                    </div>
-                    Sertifikat
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-8 lg:px-8 lg:pb-8">
-                  <motion.div
-                    variants={stagger}
-                    initial="initial"
-                    animate="animate"
-                    className="space-y-8">
-                    {Object.values(certificates).map((certificate) => (
-                      <motion.div
-                        key={certificate.id}
-                        variants={fadeIn}
-                        className="relative p-8 bg-gradient-to-r from-blue-50/50 to-transparent rounded-3xl border border-blue-100/50 hover:shadow-lg transition-all duration-300 group">
-                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
-
-                        <div className="flex flex-col xl:flex-row xl:gap-8">
-                          {/* Certificate Image */}
-                          <div className="xl:w-1/3 mb-6 xl:mb-0">
-                            <div className="relative overflow-hidden rounded-md shadow-lg group-hover:shadow-xl transition-all duration-300">
-                              <Image
-                                src={certificate.imageUrl || "/placeholder.svg"}
-                                alt={`${certificate.title} Certificate`}
-                                width={500}
-                                height={500}
-                                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </div>
-                          </div>
-
-                          {/* Certificate Details */}
-                          <div className="xl:w-2/3">
-                            <div className="flex flex-col xl:flex-row xl:justify-between xl:items-start mb-4">
-                              <div className="xl:flex-1">
-                                <h3 className="text-xl lg:text-2xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
-                                  {certificate.title}
-                                </h3>
-                                <p className="text-blue-600 font-medium text-lg mb-3">
-                                  {certificate.issuer}
-                                </p>
-                              </div>
-                              <div className="flex flex-col xl:items-end gap-2 mt-3 xl:mt-0">
-                                <Badge className="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 border-0 px-4 py-2 xl:flex-shrink-0">
-                                  {certificate.issueDate}
-                                </Badge>
-                                <div className="flex items-center gap-2 text-sm text-gray-500 bg-white/60 px-3 py-2 rounded-full">
-                                  <span className="font-medium">ID:</span>
-                                  <span className="font-mono">
-                                    {certificate.credentialId}
-                                  </span>
-                                </div>
-                                <Link
-                                  href={certificate.imageUrl}
-                                  target="_blank"
-                                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl">
-                                  Buka
-                                </Link>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-
-          {/* ===== RIGHT COLUMN ===== */}
-          <div className="lg:col-span-4 space-y-8">
-            {/* Skills Section */}
-            <motion.div {...fadeIn}>
-              <Card className="shadow-lg border-0 backdrop-blur-sm bg-white/80 hover:shadow-xl transition-all duration-300 lg:sticky lg:top-6">
-                <CardHeader className="pb-6 border-b border-gradient-to-r from-blue-100 to-transparent">
-                  <CardTitle className="text-xl lg:text-2xl text-gray-900 flex items-center gap-3">
-                    <div className="p-2 lg:p-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
-                      <User className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
-                    </div>
-                    Keahlian
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <motion.div
-                    variants={stagger}
-                    initial="initial"
-                    animate="animate"
-                    className="space-y-8">
-                    {Object.entries(skills).map(([category, skillList]) => (
-                      <motion.div
-                        key={category}
-                        variants={fadeIn}>
-                        <h3 className="font-semibold  mb-4 text-blue-600 flex items-center gap-3 text-lg">
-                          <div
-                            className="w-3 h-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
-                            aria-hidden="true"></div>
-                          {category}
-                        </h3>
-                        <ul
-                          className="flex flex-wrap gap-2"
-                          role="list">
-                          {skillList.map((skill) => (
-                            <li
-                              key={skill}
-                              className="flex items-center gap-2 px-3 py-2 bg-blue-50/50 rounded-full hover:bg-blue-100/50 transition-colors border border-blue-100/30">
-                              <div
-                                className="w-2 h-2 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"
-                                aria-hidden="true"></div>
-                              <span className="text-gray-700 text-sm font-medium">
-                                {skill}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Education Section */}
-            <motion.div {...fadeIn}>
-              <Card className="shadow-lg border-0 backdrop-blur-sm bg-white/80 hover:shadow-xl transition-all duration-300">
-                <CardHeader className="pb-6 border-b border-gradient-to-r from-blue-100 to-transparent">
-                  <CardTitle className="text-xl lg:text-2xl text-gray-900 flex items-center gap-3">
-                    <div className="p-2 lg:p-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl shadow-lg">
-                      <GraduationCap className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
-                    </div>
-                    Pendidikan
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <div className="space-y-6">
-                    {education.map((edu, index) => (
-                      <div
-                        key={index}
-                        className="relative p-6 bg-gradient-to-r from-blue-50/50 to-transparent rounded-2xl border border-blue-100/50 hover:shadow-md transition-all duration-300">
-                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full"></div>
-                        <h3 className="font-semibold text-gray-900 text-lg mb-2">
-                          {edu.institution}
-                        </h3>
-                        <p className="text-blue-600 font-medium mb-3">
-                          {edu.degree}
-                        </p>
-                        <div className="flex items-center gap-2 text-sm text-gray-500 bg-white/60 px-3 py-2 rounded-full w-fit">
-                          <Calendar className="h-4 w-4" />
-                          <span>{edu.period}</span>
-                        </div>
-                        {edu.description && (
-                          <p className="text-sm text-gray-600 mt-3 leading-relaxed">
-                            {edu.description}
-                          </p>
-                        )}
+            <motion.section
+              className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 flex-1"
+              initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
+            >
+              <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                <GraduationCap className="w-6 h-6 text-[#ccff00]" /> Education
+              </h2>
+              <div className="space-y-8">
+                {education.map((edu, i) => (
+                  <div key={i} className="relative pl-6 border-l border-[#262626]">
+                    <div className="absolute w-3 h-3 bg-[#121212] border-2 border-[#ccff00] rounded-full -left-[6.5px] top-1.5"></div>
+                    <h3 className="text-xl font-bold text-white mb-1 leading-snug">{edu.institution}</h3>
+                    <p className="text-[#ccff00] font-medium text-sm mb-1">{edu.degree}</p>
+                    {edu.location && (
+                      <div className="flex items-center gap-1.5 text-zinc-400 text-sm mb-3">
+                        <MapPin className="w-3.5 h-3.5" />
+                        {edu.location}
                       </div>
+                    )}
+                    <span className="inline-block px-3 py-1 bg-[#1a1a1a] border border-[#262626] rounded-md text-xs font-medium text-zinc-400 mb-4">
+                      {edu.period}
+                    </span>
+                    {edu.description && (
+                      <ul className="space-y-2">
+                        {edu.description.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+                            <ChevronRight className="w-4 h-4 text-[#ccff00] shrink-0 mt-0.5" />
+                            <span className="flex-1 text-justify">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </motion.section>
+          </div>
+
+          {/* 4. PROJECTS (Spans 7 columns) */}
+          <motion.section
+            className="md:col-span-7 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10"
+            initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
+          >
+            <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+              <Code2Icon className="w-6 h-6 text-[#ccff00]" /> Featured Projects
+            </h2>
+            <div className="grid grid-cols-1 gap-6">
+              {projects.map((project, i) => (
+                <div key={i} className="p-6 bg-[#1a1a1a] border border-[#262626] rounded-2xl group hover:border-[#333] transition-colors">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#ccff00] transition-colors">{project.title}</h3>
+                      <p className="text-zinc-500 text-sm font-medium">{project.role}</p>
+                    </div>
+                    <Link href={`https://${project.link}`} target="_blank" className="p-2 bg-[#121212] border border-[#262626] rounded-lg text-zinc-400 group-hover:text-[#ccff00] transition-colors">
+                      <ExternalLink className="w-4 h-4" />
+                    </Link>
+                  </div>
+                  <ul className="space-y-2 mb-6">
+                    {project.description.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+                        <ChevronRight className="w-4 h-4 text-[#ccff00] shrink-0 mt-0.5" />
+                        <span className="flex-1 text-justify">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((t) => (
+                      <span key={t} className="px-3 py-1 bg-[#121212] border border-[#262626] text-zinc-300 text-xs font-medium rounded-md">
+                        {t}
+                      </span>
                     ))}
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+                </div>
+              ))}
+            </div>
+          </motion.section>
 
-            {/* Contact CTA */}
-            <motion.div {...fadeIn}>
-              <Card className="shadow-lg border-0 bg-gradient-to-r from-blue-500 to-blue-600 text-white overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-12 translate-x-12"></div>
-                <CardContent className="p-8 text-center relative z-10">
-                  <h3 className="font-semibold mb-3 text-lg">
-                    Mari Berkolaborasi
-                  </h3>
-                  <p className="text-blue-100 mb-6 opacity-90 leading-relaxed">
-                    Tertarik untuk bekerja sama? Jangan ragu untuk menghubungi
-                    saya.
-                  </p>
-                  <div className="flex justify-center gap-4">
-                    <a
-                      href={`mailto:${personalInfo.contact.email}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-white/20 backdrop-blur-sm text-white rounded-2xl hover:bg-white/30 transition-all duration-300 cursor-pointer hover:scale-105">
-                      <Mail className="h-5 w-5" />
-                    </a>
-                    <a
-                      href={`https://${personalInfo.contact.linkedin}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-white/20 backdrop-blur-sm text-white rounded-2xl hover:bg-white/30 transition-all duration-300 cursor-pointer hover:scale-105">
-                      <Linkedin className="h-5 w-5" />
-                    </a>
-                    <a
-                      href={`https://${personalInfo.contact.github}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-white/20 backdrop-blur-sm text-white rounded-2xl hover:bg-white/30 transition-all duration-300 cursor-pointer hover:scale-105">
-                      <Github className="h-5 w-5" />
-                    </a>
+          {/* 5. SKILLS (Spans 8 columns) */}
+          <motion.section
+            className="md:col-span-8 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10"
+            initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
+          >
+            <h2 className="text-2xl font-bold text-white mb-8">Tech Stack</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {skills.map((skill, i) => (
+                <div key={i} className="space-y-4">
+                  <div className="flex items-center gap-3 text-white font-bold">
+                    <div className="p-2 bg-[#1a1a1a] border border-[#262626] rounded-lg text-[#ccff00]">
+                      {skill.icon}
+                    </div>
+                    {skill.category}
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
+                  <div className="flex flex-wrap gap-2">
+                    {skill.items.map((item) => (
+                      <span key={item} className="px-3 py-1.5 bg-[#1a1a1a] border border-[#262626] text-zinc-400 text-sm rounded-lg hover:text-[#ccff00] transition-colors cursor-default">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* 6. CERTIFICATE (Spans 4 columns) */}
+          <motion.section
+            className="md:col-span-4 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 flex flex-col"
+            initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
+          >
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <GraduationCap className="w-6 h-6 text-[#ccff00]" /> Certification
+            </h2>
+            <div className="w-full aspect-[4/3] relative rounded-xl overflow-hidden mb-6 border border-[#262626] group">
+              <Image
+                src={certificate.imageUrl || "/placeholder.svg"}
+                alt="Bangkit Certificate"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+              />
+            </div>
+            <h3 className="font-bold text-white text-lg mb-1">{certificate.title}</h3>
+            <p className="text-[#ccff00] text-sm font-medium mb-4">{certificate.issuer}</p>
+            <Link href={certificate.imageUrl} target="_blank" className="mt-auto w-full py-3 bg-[#1a1a1a] border border-[#262626] text-white font-medium text-sm rounded-xl hover:bg-[#222] transition-colors text-center flex items-center justify-center gap-2">
+              View Credential <ArrowUpRight className="w-4 h-4 text-zinc-400" />
+            </Link>
+          </motion.section>
+
         </div>
 
-        {/* Footer */}
-        <motion.footer
-          className="text-center pt-12 mt-12"
-          {...fadeIn}>
-          <div className="inline-block px-8 py-4 bg-white/60 backdrop-blur-sm rounded-full border border-blue-100/50">
-            <p className="text-gray-500">
-              Dibuat dengan ❤️ menggunakan Next.js dan Tailwind CSS
-            </p>
+        {/* ===== FOOTER ===== */}
+        <footer className="mt-12 py-8 border-t border-[#262626] flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-zinc-500 text-sm font-medium">
+            © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
+          </p>
+          <div className="flex gap-6 text-sm font-medium">
+            <a href={`https://${personalInfo.contact.linkedin}`} className="text-zinc-500 hover:text-[#ccff00] transition-colors">LinkedIn</a>
+            <a href={`https://${personalInfo.contact.github}`} className="text-zinc-500 hover:text-[#ccff00] transition-colors">GitHub</a>
           </div>
-        </motion.footer>
-      </div>
+        </footer>
+
+      </main>
     </div>
+  );
+}
+
+// Icon helper
+function Code2Icon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </svg>
   );
 }
