@@ -172,12 +172,12 @@ export default function DarkBentoPortfolio() {
             </h1>
 
             <p className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-10 text-justify">
-              I'm <strong className="text-white">{personalInfo.name}</strong>. {personalInfo.summary}
+              I&apos;m <strong className="text-white">{personalInfo.name}</strong>. {personalInfo.summary}
             </p>
 
             <div className="flex flex-wrap gap-4 mt-auto">
               <a href={`mailto:${personalInfo.contact.email}`} className="px-6 py-3 bg-[#ccff00] text-black font-bold rounded-xl hover:bg-[#b3e600] transition-colors flex items-center gap-2">
-                <Mail className="w-5 h-5" /> Let's Connect
+                <Mail className="w-5 h-5" /> Let&apos;s Connect
               </a>
               <div className="px-6 py-3 bg-[#1a1a1a] border border-[#262626] text-zinc-300 font-medium rounded-xl flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-[#ccff00]" /> {personalInfo.contact.location}
