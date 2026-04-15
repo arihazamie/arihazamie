@@ -1,7 +1,9 @@
 import { execSync } from 'child_process';
-import { resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
 
-const projectRoot = resolve(new URL('.', import.meta.url), '..');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const projectRoot = resolve(__dirname, '..');
 
 try {
   console.log('[v0] Starting deployment to GitHub main...');
