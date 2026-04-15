@@ -11,7 +11,17 @@ const jakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Ari Hazamie | Backend & Cloud",
-  description: "Portfolio of Ari Hazamie",
+  description: "Backend developer & cloud architect from Indonesia. Specialized in Node.js, Python, PostgreSQL, and Google Cloud Platform.",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  openGraph: {
+    title: "Ari Hazamie | Backend & Cloud",
+    description: "Backend developer & cloud architect from Indonesia",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

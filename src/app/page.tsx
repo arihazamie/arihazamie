@@ -142,8 +142,10 @@ export default function DarkBentoPortfolio() {
   const fadeUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.4, ease: "easeOut" },
   };
+
+  const smoothViewport = { once: true, margin: "0px 0px -100px 0px", amount: "some" };
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-zinc-300 selection:bg-[#ccff00] selection:text-black font-sans overflow-x-hidden">
@@ -222,7 +224,7 @@ export default function DarkBentoPortfolio() {
           <div className="md:col-span-5 flex flex-col gap-4 md:gap-6">
             <motion.section
               className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10"
-              initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
+              initial="initial" whileInView="animate" viewport={smoothViewport} variants={fadeUp}
             >
               <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                 <Briefcase className="w-6 h-6 text-[#ccff00]" /> Experience
@@ -251,7 +253,7 @@ export default function DarkBentoPortfolio() {
 
             <motion.section
               className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 flex-1"
-              initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
+              initial="initial" whileInView="animate" viewport={smoothViewport} variants={fadeUp}
             >
               <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                 <GraduationCap className="w-6 h-6 text-[#ccff00]" /> Education
@@ -290,7 +292,7 @@ export default function DarkBentoPortfolio() {
           {/* 4. PROJECTS (Spans 7 columns) */}
           <motion.section
             className="md:col-span-7 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10"
-            initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
+            initial="initial" whileInView="animate" viewport={smoothViewport} variants={fadeUp}
           >
             <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
               <Code2Icon className="w-6 h-6 text-[#ccff00]" /> Featured Projects
@@ -330,7 +332,7 @@ export default function DarkBentoPortfolio() {
           {/* 5. SKILLS (Spans 8 columns) */}
           <motion.section
             className="md:col-span-8 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10"
-            initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
+            initial="initial" whileInView="animate" viewport={{ once: true, margin: "0px 0px -100px 0px" }} variants={fadeUp}
           >
             <h2 className="text-2xl font-bold text-white mb-8">Tech Stack</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -357,17 +359,18 @@ export default function DarkBentoPortfolio() {
           {/* 6. CERTIFICATE (Spans 4 columns) */}
           <motion.section
             className="md:col-span-4 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 flex flex-col"
-            initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
+            initial="initial" whileInView="animate" viewport={{ once: true, margin: "0px 0px -100px 0px" }} variants={fadeUp}
           >
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
               <GraduationCap className="w-6 h-6 text-[#ccff00]" /> Certification
             </h2>
-            <div className="w-full aspect-[4/3] relative rounded-xl overflow-hidden mb-6 border border-[#262626] group">
+            <div className="w-full aspect-[4/3] relative rounded-xl overflow-hidden mb-6 border border-[#262626] group bg-[#1a1a1a]">
               <Image
                 src={certificate.imageUrl || "/placeholder.svg"}
                 alt="Bangkit Certificate"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                loading="lazy"
               />
             </div>
             <h3 className="font-bold text-white text-lg mb-1">{certificate.title}</h3>
