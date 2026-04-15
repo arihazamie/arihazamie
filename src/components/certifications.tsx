@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, Suspense } from 'react'
+import { useState } from 'react'
 import { Award, X } from 'lucide-react'
 
 const certifications = [
