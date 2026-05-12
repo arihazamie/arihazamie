@@ -10,15 +10,15 @@ export function Header() {
           Ari Hazamie
         </h1>
         <p className="text-xl text-muted-foreground font-light">
-          Backend Engineer & Cloud Architect
+          Finance & Accounting Specialist
         </p>
       </div>
 
       <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-        Information Systems graduate with a strong passion for data engineering
-        and backend infrastructure. Experienced in architecting scalable
-        solutions on Google Cloud Platform, optimizing SQL queries, and building
-        robust data integrations via RESTful APIs.
+        Information Systems graduate with hands-on experience in village
+        financial management. Expert in Siskeudes (SPP/SPM, BKU, LRA, APBDes,
+        SPJ), financial reporting, and transaction reconciliation. Combines
+        financial discipline with data analysis using Python and SQL.
       </p>
 
       <div className="flex gap-5 text-sm">

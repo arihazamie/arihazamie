@@ -10,7 +10,7 @@ import {
   ArrowUpRight,
   Terminal,
   Database,
-  Cloud,
+  BarChart3,
   Briefcase,
   GraduationCap,
   ChevronRight
@@ -24,9 +24,9 @@ import Link from "next/link";
 // ==========================================
 const personalInfo = {
   name: "Ari Hazamie",
-  title: "Backend Developer & Cloud Architecture",
+  title: "Finance & Accounting Specialist",
   summary:
-    "Information Systems graduate with a focus on backend development, cloud computing, and data-driven systems. Experienced in building RESTful APIs, managing PostgreSQL databases, and developing scalable cloud-based systems through team-based projects.",
+    "Information Systems graduate with hands-on experience in village financial management as Head of Finance. Expert in managing the full financial cycle using Siskeudes — from inputting RAB/APBDes, recording SPP/SPM, maintaining the General Cash Book (BKU), to preparing Budget Implementation Reports (LRA) and Accountability Reports (SPJ). Combines financial discipline with data analysis skills using Python and SQL for accurate, systematic financial reporting.",
   contact: {
     email: "arihzmiutama@gmail.com",
     location: "Merangin, Jambi",
@@ -37,73 +37,83 @@ const personalInfo = {
 
 const experience = [
   {
-    title: "Head of Finance Affairs",
-    company: "Sungai Jering Village Office",
-    period: "Oct 2025 - Apr 2026",
-    location: "Jambi, Indonesia",
+    title: "Head of Finance",
+    company: "Pemerintah Desa Sungai Jering",
+    period: "Oct 2025 – Apr 2026",
+    location: "Merangin, Jambi",
     description: [
-      "Managed the withdrawal and disbursement of village funds through the banking system every three months, with transaction amounts ranging from Rp100 million to Rp250 million",
-      "Ensured the smooth and timely distribution of salaries to 9 village officials and 5 members of the Village Council (BPD), as well as village staff and institutions.",
-      "Prepared systematic financial accountability reports to support transparency and accountability in the management of village funds.",
-      "Managed the administration of the Village Budget (APBDes), including the accurate and timely entry of data and printing of budget documents."
+      "Fully operated the Siskeudes application — including inputting RAB/APBDes, recording SPP/SPM, maintaining the General Cash Book (BKU), and preparing the Budget Implementation Report (LRA).",
+      "Managed village fund disbursements through the banking system every 3 months with transaction values ranging from Rp100 million to Rp250 million, including check withdrawals and bank statement retrievals.",
+      "Prepared Accountability Reports (SPJ) and printed village financial reports as a form of accountability to the local government.",
+      "Managed the disbursement and distribution of Direct Cash Assistance (BLT) to eligible beneficiaries in accordance with applicable regulations.",
+      "Verified consistency of financial data against transaction records to ensure accuracy in village financial recording and reporting.",
+    ],
+  },
+  {
+    title: "Graphic Designer",
+    company: "Dhimas Digital Printing",
+    period: "Jan 2020 – Apr 2020",
+    location: "Kota Jambi, Jambi",
+    description: [
+      "Designed various visual materials using CorelDRAW, including banners, billboards, and flags.",
+      "Created print media designs such as Yasin booklets and company ID cards, tailored to client specifications.",
+      "Coordinated with the production team to ensure designs matched printed output with optimal quality.",
     ],
   },
 ];
 
 const projects = [
   {
-    title: "Eco Sense Smart Environment",
-    role: "Cloud Computing Lead",
-    period: "Nov 2024 - Dec 2024",
-    description: [
-      "Led the design and implementation of cloud architecture for geospatial environmental data processing systems.",
-      "Developed RESTful APIs (Flask) and satellite image processing pipelines (GeoTIFF), as well as ML model integrations (Random Forest, K-Means).",
-      "Managed data storage and distribution using Firebase Storage and Firestore, and deployed the backend using Gunicorn, collaborating across teams to deliver a scalable end-to-end system."
-    ],
-    tech: ["Python", "Flask", "TensorFlow", "TensorFlow Decision Forests", "Firebase", "Gunicorn", "Numpy", "Pandas"],
-    link: "github.com/arihazamie/EcoSense",
-  },
-  {
-    title: "LPPM Research Management",
+    title: "LPPM Research Management System",
     role: "Full Stack Web Developer",
-    period: "May 2025 - Oct 2025",
+    period: "May 2025 – Oct 2025",
     description: [
-      "Developed a web-based research and community service management system with a role-based architecture (Admin and Faculty) and an approval workflow.",
-      "Built a RESTful API, managed a database using PostgreSQL and Prisma ORM, and implemented JWT-based authentication using NextAuth.js.",
-      "Integrated data export features to Excel, input validation using Zod, and security measures including role-based protection middleware, password hashing, and user data isolation."
+      "Developed a full-stack institutional data management system for the university's LPPM with role-based access (Admin & Faculty) and an approval workflow — mirroring structured financial approval processes.",
+      "Designed and managed a PostgreSQL database schema using Prisma ORM, supporting 5+ modules for research and community service data with strict data integrity.",
+      "Implemented data export to Excel for institutional reporting — a pattern directly applicable to financial reporting and audit-trail workflows.",
     ],
-    tech: ["Next.js", "PostgreSQL", "TypeScript", "Tailwind CSS", "Prisma ORM", "JWT"],
+    tech: ["Next.js", "PostgreSQL", "TypeScript", "Prisma ORM", "NextAuth.js", "Excel Export"],
     link: "lppm.arihazamie.my.id",
   },
   {
     title: "Geopark Merangin Information System",
-    role: "Full Stack Web Developer",
-    period: "Feb 2025 - Oct 2025",
+    role: "Full Stack Web Developer — Final Thesis (Skripsi)",
+    period: "Feb 2025 – Oct 2025",
     description: [
-      "Developed a web-based tourism information system by building a RESTful API and managing location and environmental data using PostgreSQL.",
-      "Used Next.js and TypeScript for application development and deployed the system via Vercel to ensure fast and stable access",
-      "Created a system capable of presenting information in a structured manner and supporting efficient data access."
+      "Built a web-based information system with structured location and environmental data management using PostgreSQL — demonstrating end-to-end data lifecycle handling.",
+      "Deployed via Vercel with Next.js and TypeScript, ensuring reliable and scalable data access for public-facing reporting.",
     ],
-    tech: ["Next.js", "PostgreSQL", "TypeScript", "Tailwind CSS", "Prisma ORM", "Vercel"],
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "Vercel"],
     link: "geopark.arihazamie.my.id",
+  },
+  {
+    title: "Eco Sense Smart Environmental App",
+    role: "Cloud Computing Lead — Bangkit Academy Capstone",
+    period: "Nov 2024 – Dec 2024",
+    description: [
+      "Led cloud architecture (GCP) for a geospatial data processing system serving real-time satellite datasets, applying data pipeline principles transferable to financial data flows.",
+      "Built a RESTful API (Flask) integrating Random Forest and K-Means models, demonstrating quantitative data analysis capabilities relevant to financial forecasting.",
+    ],
+    tech: ["Python", "Flask", "GCP", "TensorFlow", "Scikit-learn", "Pandas", "NumPy"],
+    link: "github.com/arihazamie/EcoSense",
   },
 ];
 
 const skills = [
   {
-    category: "Cloud & Backend",
-    icon: <Cloud className="w-5 h-5" />,
-    items: ["GCP", "Cloud Run", "Node.js", "Python", "Flask", "REST API"],
+    category: "Finance & Accounting",
+    icon: <BarChart3 className="w-5 h-5" />,
+    items: ["Siskeudes", "SPP/SPM", "BKU", "LRA", "APBDes", "SPJ", "BLT", "Financial Reporting", "Transaction Reconciliation", "Budget Execution Analysis"],
   },
   {
-    category: "Database",
+    category: "Data Analysis",
     icon: <Database className="w-5 h-5" />,
-    items: ["PostgreSQL", "SQL", "Prisma ORM", "Firebase"],
+    items: ["Python", "Pandas", "NumPy", "SQL", "PostgreSQL", "Excel"],
   },
   {
-    category: "Web Frontend",
+    category: "Tools & Software",
     icon: <Terminal className="w-5 h-5" />,
-    items: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    items: ["Microsoft Excel", "Microsoft Word", "CorelDRAW", "Canva", "Next.js", "TypeScript"],
   },
 ];
 
@@ -167,8 +177,8 @@ export default function DarkBentoPortfolio() {
             </Badge>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
-              Backend systems & <br />
-              <span className="text-[#ccff00]">cloud architecture.</span>
+              Finance & Accounting <br />
+              <span className="text-[#ccff00]">specialist.</span>
             </h1>
 
             <p className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-10 text-justify">
@@ -211,7 +221,7 @@ export default function DarkBentoPortfolio() {
             </div>
 
             <div className="bg-[#ccff00] rounded-[2rem] p-8 text-black flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
-              <h3 className="text-2xl font-bold leading-tight mb-4">Have a project <br /> in mind?</h3>
+              <h3 className="text-2xl font-bold leading-tight mb-4">Looking to hire <br /> a finance specialist?</h3>
               <a href={`mailto:${personalInfo.contact.email}`} className="inline-flex items-center gap-2 font-bold text-lg">
                 Email Me <ArrowUpRight className="w-5 h-5" />
               </a>
@@ -293,7 +303,7 @@ export default function DarkBentoPortfolio() {
             initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
           >
             <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-              <Code2Icon className="w-6 h-6 text-[#ccff00]" /> Featured Projects
+              <Code2Icon className="w-6 h-6 text-[#ccff00]" /> Projects & Systems Built
             </h2>
             <div className="grid grid-cols-1 gap-6">
               {projects.map((project, i) => (
@@ -332,7 +342,7 @@ export default function DarkBentoPortfolio() {
             className="md:col-span-8 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10"
             initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
           >
-            <h2 className="text-2xl font-bold text-white mb-8">Tech Stack</h2>
+            <h2 className="text-2xl font-bold text-white mb-8">Skills & Expertise</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {skills.map((skill, i) => (
                 <div key={i} className="space-y-4">
