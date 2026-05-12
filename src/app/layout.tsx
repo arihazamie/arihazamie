@@ -93,10 +93,11 @@ export const metadata: Metadata = {
     },
   },
 
-  // ── Verification (isi nanti setelah daftar Google Search Console) ──
-  // verification: {
-  //   google: "PASTE_KODE_VERIFIKASI_GOOGLE_DISINI",
-  // },
+  // ── Google Site Verification (isi nanti setelah daftar Google Search Console) ──
+  verification: {
+    google:
+      "google-site-verification=C_8pI9mZFb3Yr1fxbrIInHK8HCnv-ToYm8fjzI55ExAda",
+  },
 };
 
 export default function RootLayout({
