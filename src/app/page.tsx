@@ -13,7 +13,8 @@ import {
   BarChart3,
   Briefcase,
   GraduationCap,
-  ChevronRight
+  ChevronRight,
+  FileSpreadsheet,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -72,7 +73,14 @@ const projects = [
       "Designed and managed a PostgreSQL database schema using Prisma ORM, supporting 5+ modules for research and community service data with strict data integrity.",
       "Implemented data export to Excel for institutional reporting — a pattern directly applicable to financial reporting and audit-trail workflows.",
     ],
-    tech: ["Next.js", "PostgreSQL", "TypeScript", "Prisma ORM", "NextAuth.js", "Excel Export"],
+    tech: [
+      "Next.js",
+      "PostgreSQL",
+      "TypeScript",
+      "Prisma ORM",
+      "NextAuth.js",
+      "Excel Export",
+    ],
     link: "lppm.arihazamie.my.id",
   },
   {
@@ -94,7 +102,15 @@ const projects = [
       "Led cloud architecture (GCP) for a geospatial data processing system serving real-time satellite datasets, applying data pipeline principles transferable to financial data flows.",
       "Built a RESTful API (Flask) integrating Random Forest and K-Means models, demonstrating quantitative data analysis capabilities relevant to financial forecasting.",
     ],
-    tech: ["Python", "Flask", "GCP", "TensorFlow", "Scikit-learn", "Pandas", "NumPy"],
+    tech: [
+      "Python",
+      "Flask",
+      "GCP",
+      "TensorFlow",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+    ],
     link: "github.com/arihazamie/EcoSense",
   },
 ];
@@ -103,7 +119,18 @@ const skills = [
   {
     category: "Finance & Accounting",
     icon: <BarChart3 className="w-5 h-5" />,
-    items: ["Siskeudes", "SPP/SPM", "BKU", "LRA", "APBDes", "SPJ", "BLT", "Financial Reporting", "Transaction Reconciliation", "Budget Execution Analysis"],
+    items: [
+      "Siskeudes",
+      "SPP/SPM",
+      "BKU",
+      "LRA",
+      "APBDes",
+      "SPJ",
+      "BLT",
+      "Financial Reporting",
+      "Transaction Reconciliation",
+      "Budget Execution Analysis",
+    ],
   },
   {
     category: "Data Analysis",
@@ -113,7 +140,14 @@ const skills = [
   {
     category: "Tools & Software",
     icon: <Terminal className="w-5 h-5" />,
-    items: ["Microsoft Excel", "Microsoft Word", "CorelDRAW", "Canva", "Next.js", "TypeScript"],
+    items: [
+      "Microsoft Excel",
+      "Microsoft Word",
+      "CorelDRAW",
+      "Canva",
+      "Next.js",
+      "TypeScript",
+    ],
   },
 ];
 
@@ -124,8 +158,8 @@ const education = [
     degree: "Bachelor of Information Systems",
     period: "Aug 2021 - Oct 2025",
     description: [
-      "Strengthened skills in system development, data management, and problem-solving through a combination of academic study and practical projects throughout the program."
-    ]
+      "Strengthened skills in system development, data management, and problem-solving through a combination of academic study and practical projects throughout the program.",
+    ],
   },
   {
     institution: "Bangkit Academy (by Google, GoTo, Traveloka) - MSIB Program",
@@ -133,8 +167,8 @@ const education = [
     degree: "Cloud Computing Learning Path",
     period: "Sep 2024 - Dec 2024",
     description: [
-      "Completed an industry-focused intensive program centered on cloud computing, backend development, and DevOps practices using Google Cloud Platform. Developed RESTful APIs, deployed applications using Cloud Run, and managed cloud-based databases in a team-based capstone project."
-    ]
+      "Completed an industry-focused intensive program centered on cloud computing, backend development, and DevOps practices using Google Cloud Platform. Developed RESTful APIs, deployed applications using Cloud Run, and managed cloud-based databases in a team-based capstone project.",
+    ],
   },
 ];
 
@@ -157,17 +191,15 @@ export default function DarkBentoPortfolio() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-zinc-300 selection:bg-[#ccff00] selection:text-black font-sans overflow-x-hidden">
-
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-24">
-
         {/* ===== BENTO GRID ===== */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
-
           {/* 1. HERO SECTION (Spans 8 columns) */}
           <motion.section
             className="md:col-span-8 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-12 flex flex-col justify-center relative overflow-hidden group"
-            initial="initial" animate="animate" variants={fadeUp}
-          >
+            initial="initial"
+            animate="animate"
+            variants={fadeUp}>
             {/* Subtle glow effect */}
             <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-[#ccff00]/5 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none"></div>
 
@@ -182,15 +214,20 @@ export default function DarkBentoPortfolio() {
             </h1>
 
             <p className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-10 text-justify">
-              I&apos;m <strong className="text-white">{personalInfo.name}</strong>. {personalInfo.summary}
+              I&apos;m{" "}
+              <strong className="text-white">{personalInfo.name}</strong>.{" "}
+              {personalInfo.summary}
             </p>
 
             <div className="flex flex-wrap gap-4 mt-auto">
-              <a href={`mailto:${personalInfo.contact.email}`} className="px-6 py-3 bg-[#ccff00] text-black font-bold rounded-xl hover:bg-[#b3e600] transition-colors flex items-center gap-2">
+              <a
+                href={`mailto:${personalInfo.contact.email}`}
+                className="px-6 py-3 bg-[#ccff00] text-black font-bold rounded-xl hover:bg-[#b3e600] transition-colors flex items-center gap-2">
                 <Mail className="w-5 h-5" /> Let&apos;s Connect
               </a>
               <div className="px-6 py-3 bg-[#1a1a1a] border border-[#262626] text-zinc-300 font-medium rounded-xl flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-[#ccff00]" /> {personalInfo.contact.location}
+                <MapPin className="w-5 h-5 text-[#ccff00]" />{" "}
+                {personalInfo.contact.location}
               </div>
             </div>
           </motion.section>
@@ -198,20 +235,27 @@ export default function DarkBentoPortfolio() {
           {/* 2. SOCIALS & QUICK CONTACT (Spans 4 columns) */}
           <motion.section
             className="md:col-span-4 flex flex-col gap-4 md:gap-6"
-            initial="initial" animate="animate" variants={fadeUp}
-          >
+            initial="initial"
+            animate="animate"
+            variants={fadeUp}>
             <div className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 flex-1 flex flex-col justify-center relative group overflow-hidden hover:border-[#333] transition-colors">
               <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                 <Terminal className="w-5 h-5 text-[#ccff00]" /> Social Profiles
               </h3>
               <div className="space-y-3">
-                <a href={`https://${personalInfo.contact.github}`} target="_blank" className="flex items-center justify-between p-4 bg-[#1a1a1a] border border-[#262626] rounded-xl hover:bg-[#222] transition-colors group/link">
+                <a
+                  href={`https://${personalInfo.contact.github}`}
+                  target="_blank"
+                  className="flex items-center justify-between p-4 bg-[#1a1a1a] border border-[#262626] rounded-xl hover:bg-[#222] transition-colors group/link">
                   <div className="flex items-center gap-3 text-white font-medium">
                     <Github className="w-5 h-5" /> GitHub
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover/link:text-[#ccff00] transition-colors" />
                 </a>
-                <a href={`https://${personalInfo.contact.linkedin}`} target="_blank" className="flex items-center justify-between p-4 bg-[#1a1a1a] border border-[#262626] rounded-xl hover:bg-[#222] transition-colors group/link">
+                <a
+                  href={`https://${personalInfo.contact.linkedin}`}
+                  target="_blank"
+                  className="flex items-center justify-between p-4 bg-[#1a1a1a] border border-[#262626] rounded-xl hover:bg-[#222] transition-colors group/link">
                   <div className="flex items-center gap-3 text-white font-medium">
                     <Linkedin className="w-5 h-5" /> LinkedIn
                   </div>
@@ -221,8 +265,12 @@ export default function DarkBentoPortfolio() {
             </div>
 
             <div className="bg-[#ccff00] rounded-[2rem] p-8 text-black flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
-              <h3 className="text-2xl font-bold leading-tight mb-4">Looking to hire <br /> a finance specialist?</h3>
-              <a href={`mailto:${personalInfo.contact.email}`} className="inline-flex items-center gap-2 font-bold text-lg">
+              <h3 className="text-2xl font-bold leading-tight mb-4">
+                Looking to hire <br /> a finance specialist?
+              </h3>
+              <a
+                href={`mailto:${personalInfo.contact.email}`}
+                className="inline-flex items-center gap-2 font-bold text-lg">
                 Email Me <ArrowUpRight className="w-5 h-5" />
               </a>
             </div>
@@ -232,23 +280,33 @@ export default function DarkBentoPortfolio() {
           <div className="md:col-span-5 flex flex-col gap-4 md:gap-6">
             <motion.section
               className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10"
-              initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
-            >
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={fadeUp}>
               <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                 <Briefcase className="w-6 h-6 text-[#ccff00]" /> Experience
               </h2>
               <div className="space-y-8">
                 {experience.map((exp, i) => (
-                  <div key={i} className="relative pl-6 border-l border-[#262626]">
+                  <div
+                    key={i}
+                    className="relative pl-6 border-l border-[#262626]">
                     <div className="absolute w-3 h-3 bg-[#121212] border-2 border-[#ccff00] rounded-full -left-[6.5px] top-1.5"></div>
-                    <h3 className="text-xl font-bold text-white mb-1">{exp.title}</h3>
-                    <p className="text-[#ccff00] font-medium text-sm mb-3">{exp.company}</p>
+                    <h3 className="text-xl font-bold text-white mb-1">
+                      {exp.title}
+                    </h3>
+                    <p className="text-[#ccff00] font-medium text-sm mb-3">
+                      {exp.company}
+                    </p>
                     <span className="inline-block px-3 py-1 bg-[#1a1a1a] border border-[#262626] rounded-md text-xs font-medium text-zinc-400 mb-4">
                       {exp.period}
                     </span>
                     <ul className="space-y-2">
                       {exp.description.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+                        <li
+                          key={idx}
+                          className="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
                           <ChevronRight className="w-4 h-4 text-[#ccff00] shrink-0 mt-0.5" />
                           <span className="flex-1 text-justify">{item}</span>
                         </li>
@@ -261,17 +319,25 @@ export default function DarkBentoPortfolio() {
 
             <motion.section
               className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 flex-1"
-              initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
-            >
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={fadeUp}>
               <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                 <GraduationCap className="w-6 h-6 text-[#ccff00]" /> Education
               </h2>
               <div className="space-y-8">
                 {education.map((edu, i) => (
-                  <div key={i} className="relative pl-6 border-l border-[#262626]">
+                  <div
+                    key={i}
+                    className="relative pl-6 border-l border-[#262626]">
                     <div className="absolute w-3 h-3 bg-[#121212] border-2 border-[#ccff00] rounded-full -left-[6.5px] top-1.5"></div>
-                    <h3 className="text-xl font-bold text-white mb-1 leading-snug">{edu.institution}</h3>
-                    <p className="text-[#ccff00] font-medium text-sm mb-1">{edu.degree}</p>
+                    <h3 className="text-xl font-bold text-white mb-1 leading-snug">
+                      {edu.institution}
+                    </h3>
+                    <p className="text-[#ccff00] font-medium text-sm mb-1">
+                      {edu.degree}
+                    </p>
                     {edu.location && (
                       <div className="flex items-center gap-1.5 text-zinc-400 text-sm mb-3">
                         <MapPin className="w-3.5 h-3.5" />
@@ -284,7 +350,9 @@ export default function DarkBentoPortfolio() {
                     {edu.description && (
                       <ul className="space-y-2">
                         {edu.description.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+                          <li
+                            key={idx}
+                            className="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
                             <ChevronRight className="w-4 h-4 text-[#ccff00] shrink-0 mt-0.5" />
                             <span className="flex-1 text-justify">{item}</span>
                           </li>
@@ -300,26 +368,40 @@ export default function DarkBentoPortfolio() {
           {/* 4. PROJECTS (Spans 7 columns) */}
           <motion.section
             className="md:col-span-7 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10"
-            initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
-          >
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeUp}>
             <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-              <Code2Icon className="w-6 h-6 text-[#ccff00]" /> Projects & Systems Built
+              <Code2Icon className="w-6 h-6 text-[#ccff00]" /> Projects &
+              Systems Built
             </h2>
             <div className="grid grid-cols-1 gap-6">
               {projects.map((project, i) => (
-                <div key={i} className="p-6 bg-[#1a1a1a] border border-[#262626] rounded-2xl group hover:border-[#333] transition-colors">
+                <div
+                  key={i}
+                  className="p-6 bg-[#1a1a1a] border border-[#262626] rounded-2xl group hover:border-[#333] transition-colors">
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#ccff00] transition-colors">{project.title}</h3>
-                      <p className="text-zinc-500 text-sm font-medium">{project.role}</p>
+                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#ccff00] transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-zinc-500 text-sm font-medium">
+                        {project.role}
+                      </p>
                     </div>
-                    <Link href={`https://${project.link}`} target="_blank" className="p-2 bg-[#121212] border border-[#262626] rounded-lg text-zinc-400 group-hover:text-[#ccff00] transition-colors">
+                    <Link
+                      href={`https://${project.link}`}
+                      target="_blank"
+                      className="p-2 bg-[#121212] border border-[#262626] rounded-lg text-zinc-400 group-hover:text-[#ccff00] transition-colors">
                       <ExternalLink className="w-4 h-4" />
                     </Link>
                   </div>
                   <ul className="space-y-2 mb-6">
                     {project.description.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+                      <li
+                        key={idx}
+                        className="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
                         <ChevronRight className="w-4 h-4 text-[#ccff00] shrink-0 mt-0.5" />
                         <span className="flex-1 text-justify">{item}</span>
                       </li>
@@ -327,7 +409,9 @@ export default function DarkBentoPortfolio() {
                   </ul>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t) => (
-                      <span key={t} className="px-3 py-1 bg-[#121212] border border-[#262626] text-zinc-300 text-xs font-medium rounded-md">
+                      <span
+                        key={t}
+                        className="px-3 py-1 bg-[#121212] border border-[#262626] text-zinc-300 text-xs font-medium rounded-md">
                         {t}
                       </span>
                     ))}
@@ -340,12 +424,18 @@ export default function DarkBentoPortfolio() {
           {/* 5. SKILLS (Spans 8 columns) */}
           <motion.section
             className="md:col-span-8 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10"
-            initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
-          >
-            <h2 className="text-2xl font-bold text-white mb-8">Skills & Expertise</h2>
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeUp}>
+            <h2 className="text-2xl font-bold text-white mb-8">
+              Skills & Expertise
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {skills.map((skill, i) => (
-                <div key={i} className="space-y-4">
+                <div
+                  key={i}
+                  className="space-y-4">
                   <div className="flex items-center gap-3 text-white font-bold">
                     <div className="p-2 bg-[#1a1a1a] border border-[#262626] rounded-lg text-[#ccff00]">
                       {skill.icon}
@@ -354,7 +444,9 @@ export default function DarkBentoPortfolio() {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {skill.items.map((item) => (
-                      <span key={item} className="px-3 py-1.5 bg-[#1a1a1a] border border-[#262626] text-zinc-400 text-sm rounded-lg hover:text-[#ccff00] transition-colors cursor-default">
+                      <span
+                        key={item}
+                        className="px-3 py-1.5 bg-[#1a1a1a] border border-[#262626] text-zinc-400 text-sm rounded-lg hover:text-[#ccff00] transition-colors cursor-default">
                         {item}
                       </span>
                     ))}
@@ -367,8 +459,10 @@ export default function DarkBentoPortfolio() {
           {/* 6. CERTIFICATE (Spans 4 columns) */}
           <motion.section
             className="md:col-span-4 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 flex flex-col"
-            initial="initial" whileInView="animate" viewport={{ once: true }} variants={fadeUp}
-          >
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeUp}>
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
               <GraduationCap className="w-6 h-6 text-[#ccff00]" /> Certification
             </h2>
@@ -380,26 +474,87 @@ export default function DarkBentoPortfolio() {
                 className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
               />
             </div>
-            <h3 className="font-bold text-white text-lg mb-1">{certificate.title}</h3>
-            <p className="text-[#ccff00] text-sm font-medium mb-4">{certificate.issuer}</p>
-            <Link href={certificate.imageUrl} target="_blank" className="mt-auto w-full py-3 bg-[#1a1a1a] border border-[#262626] text-white font-medium text-sm rounded-xl hover:bg-[#222] transition-colors text-center flex items-center justify-center gap-2">
+            <h3 className="font-bold text-white text-lg mb-1">
+              {certificate.title}
+            </h3>
+            <p className="text-[#ccff00] text-sm font-medium mb-4">
+              {certificate.issuer}
+            </p>
+            <Link
+              href={certificate.imageUrl}
+              target="_blank"
+              className="mt-auto w-full py-3 bg-[#1a1a1a] border border-[#262626] text-white font-medium text-sm rounded-xl hover:bg-[#222] transition-colors text-center flex items-center justify-center gap-2">
               View Credential <ArrowUpRight className="w-4 h-4 text-zinc-400" />
             </Link>
           </motion.section>
 
+          {/* 7. EXCEL PORTFOLIO (Spans 12 columns) */}
+          <motion.section
+            className="md:col-span-12 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-12 relative overflow-hidden"
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeUp}>
+            <div className="absolute top-0 left-0 w-[24rem] h-[24rem] bg-[#ccff00]/5 rounded-full blur-[100px] -ml-32 -mt-32 pointer-events-none"></div>
+
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative">
+              <div className="max-w-2xl">
+                <h2 className="text-2xl font-bold text-white mb-3 flex items-center gap-3">
+                  <FileSpreadsheet className="w-6 h-6 text-[#ccff00]" /> Excel
+                  Portfolio
+                </h2>
+                <p className="text-zinc-400 text-sm leading-relaxed text-justify mb-5">
+                  A 1,500-transaction sales workbook taken from raw data to an
+                  executive report: data cleaning, a live lookup table, a pivot
+                  analysis, a KPI dashboard built on
+                  SUMIFS/INDEX-MATCH/SUMPRODUCT, and a written business
+                  recommendation — the same spreadsheet discipline I bring to
+                  village financial reporting.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Rp4.4M Revenue Analyzed",
+                    "7 Sheets",
+                    "8+ Formula Types",
+                    "1,500 Rows",
+                  ].map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1.5 bg-[#1a1a1a] border border-[#262626] text-zinc-400 text-xs font-medium rounded-lg">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <Link
+                href="/excel"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#ccff00] text-black font-bold rounded-xl hover:bg-[#b3e600] transition-colors shrink-0 self-start lg:self-center">
+                View Excel Portfolio <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </motion.section>
         </div>
 
         {/* ===== FOOTER ===== */}
         <footer className="mt-12 py-8 border-t border-[#262626] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-zinc-500 text-sm font-medium">
-            © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
+            © {new Date().getFullYear()} {personalInfo.name}. All rights
+            reserved.
           </p>
           <div className="flex gap-6 text-sm font-medium">
-            <a href={`https://${personalInfo.contact.linkedin}`} className="text-zinc-500 hover:text-[#ccff00] transition-colors">LinkedIn</a>
-            <a href={`https://${personalInfo.contact.github}`} className="text-zinc-500 hover:text-[#ccff00] transition-colors">GitHub</a>
+            <a
+              href={`https://${personalInfo.contact.linkedin}`}
+              className="text-zinc-500 hover:text-[#ccff00] transition-colors">
+              LinkedIn
+            </a>
+            <a
+              href={`https://${personalInfo.contact.github}`}
+              className="text-zinc-500 hover:text-[#ccff00] transition-colors">
+              GitHub
+            </a>
           </div>
         </footer>
-
       </main>
     </div>
   );
@@ -418,8 +573,7 @@ function Code2Icon(props: React.SVGProps<SVGSVGElement>) {
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+      strokeLinejoin="round">
       <polyline points="16 18 22 12 16 6" />
       <polyline points="8 6 2 12 8 18" />
     </svg>

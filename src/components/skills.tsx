@@ -1,27 +1,27 @@
 'use client'
 
-import { Code2, Database, Shield, Wrench } from 'lucide-react'
+import { BookOpen, BarChart3, Wrench, Globe } from 'lucide-react'
 
 const skillCategories = [
   {
-    icon: Code2,
-    title: 'Backend Development',
-    skills: ['Node.js', 'RESTful APIs', 'JavaScript', 'TypeScript']
+    icon: BookOpen,
+    title: 'Finance & Accounting',
+    skills: ['Siskeudes', 'SPP/SPM', 'BKU (General Cash Book)', 'LRA (Budget Implementation Report)', 'APBDes', 'SPJ (Accountability Report)', 'BLT Management', 'Financial Reporting', 'Transaction Reconciliation', 'Budget Execution Analysis']
   },
   {
-    icon: Database,
-    title: 'Databases & ORM',
-    skills: ['PostgreSQL', 'Prisma ORM', 'SQL Query Optimization', 'Cloud SQL']
-  },
-  {
-    icon: Shield,
-    title: 'Security & Cloud',
-    skills: ['NextAuth.js (JWT)', 'Google Cloud Platform', 'Cloud Run', 'RBAC Systems']
+    icon: BarChart3,
+    title: 'Data Analysis',
+    skills: ['Python (Pandas, NumPy)', 'SQL / PostgreSQL', 'Microsoft Excel', 'Data Verification', 'Financial Data Integrity']
   },
   {
     icon: Wrench,
-    title: 'Tools & Skills',
-    skills: ['Git', 'AI-Assisted Tools', 'Data Integrity', 'Problem Solving']
+    title: 'Office & Design Tools',
+    skills: ['Microsoft Excel', 'Microsoft Word', 'Microsoft PowerPoint', 'CorelDRAW', 'Canva']
+  },
+  {
+    icon: Globe,
+    title: 'Web & Systems',
+    skills: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma ORM', 'Google Cloud Platform']
   }
 ]
 

@@ -4,15 +4,26 @@ import { Briefcase, CheckCircle2 } from 'lucide-react'
 
 const experiences = [
   {
-    title: 'Head of Finance Affairs',
-    company: 'Sungai Jering Village Government',
-    period: '10/2025 – Present',
+    title: 'Head of Finance',
+    company: 'Pemerintah Desa Sungai Jering',
+    period: '10/2025 – 04/2026',
     location: 'Merangin, Jambi',
     highlights: [
-      'Manage input and printing of Village Budget (APBDes) with strict data accuracy',
-      'Execute village fund withdrawals and manage monthly salary disbursements',
-      'Prepare detailed financial accountability reports (SPJ) in compliance with government regulations',
-      'Strengthened attention to detail and data integrity - core soft skills for engineering work'
+      'Fully operated the Siskeudes application — inputting RAB/APBDes, recording SPP/SPM, maintaining the General Cash Book (BKU), and preparing the Budget Implementation Report (LRA)',
+      'Managed village fund disbursements of Rp100–250 million per quarter via banking system, including check withdrawals and bank statement reconciliation',
+      'Prepared Accountability Reports (SPJ) and village financial reports for local government accountability',
+      'Managed disbursement and distribution of Direct Cash Assistance (BLT) to eligible beneficiaries per applicable regulations',
+      'Verified consistency of financial data against transaction records to ensure accuracy in village financial recording and reporting'
+    ]
+  },
+  {
+    title: 'Graphic Designer',
+    company: 'Dhimas Digital Printing',
+    period: '01/2020 – 04/2020',
+    location: 'Kota Jambi, Jambi',
+    highlights: [
+      'Designed visual materials using CorelDRAW — banners, billboards, flags, and print media',
+      'Coordinated with production team to ensure print-ready output with optimal quality'
     ]
   }
 ]
