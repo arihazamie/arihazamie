@@ -39,9 +39,17 @@ const fadeUp = {
   transition: { duration: 0.5, ease: "easeOut" as const },
 };
 
-type TabKey = "overview" | "raw" | "pivot" | "rankings" | "formulas" | "insights";
+type TabKey =
+  | "preview"
+  | "overview"
+  | "raw"
+  | "pivot"
+  | "rankings"
+  | "formulas"
+  | "insights";
 
 const TABS: { key: TabKey; label: string; icon: typeof Layers }[] = [
+  { key: "preview", label: "File Preview", icon: FileSpreadsheet },
   { key: "overview", label: "Overview", icon: Layers },
   { key: "raw", label: "Raw Data", icon: Table2 },
   { key: "pivot", label: "Pivot Analysis", icon: BarChart3 },
@@ -79,8 +87,7 @@ export function ExcelPortfolioClient() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-24">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-[#ccff00] transition-colors mb-8"
-        >
+          className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-[#ccff00] transition-colors mb-8">
           <ArrowLeft className="w-4 h-4" /> Back to portfolio
         </Link>
 
@@ -89,8 +96,7 @@ export function ExcelPortfolioClient() {
           className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-12 relative overflow-hidden mb-6 md:mb-8"
           initial="initial"
           animate="animate"
-          variants={fadeUp}
-        >
+          variants={fadeUp}>
           <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-[#ccff00]/5 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
 
           <Badge className="w-fit mb-6 px-4 py-1.5 bg-[#1a1a1a] border-[#333] text-zinc-300 rounded-full text-sm">
@@ -105,8 +111,8 @@ export function ExcelPortfolioClient() {
           <p className="text-lg text-zinc-400 max-w-2xl leading-relaxed mb-10 text-justify">
             Every workbook here goes through the same pipeline I use for real
             financial reporting: raw data in, cleaning and formulas in the
-            middle, an executive-ready report out. No screenshots — every
-            number on this page is computed straight from the actual{" "}
+            middle, an executive-ready report out. No screenshots — every number
+            on this page is computed straight from the actual{" "}
             <span className="text-zinc-200 font-medium">.xlsx</span> files,
             which you can also download below.
           </p>
@@ -116,7 +122,9 @@ export function ExcelPortfolioClient() {
               <div className="text-2xl md:text-3xl font-bold text-white">
                 {excelWorkbooks.length}
               </div>
-              <div className="text-xs text-zinc-500 mt-1">Workbook{excelWorkbooks.length !== 1 ? "s" : ""}</div>
+              <div className="text-xs text-zinc-500 mt-1">
+                Workbook{excelWorkbooks.length !== 1 ? "s" : ""}
+              </div>
             </div>
             <div className="bg-[#1a1a1a] border border-[#262626] rounded-xl p-4">
               <div className="text-2xl md:text-3xl font-bold text-white">
@@ -136,7 +144,10 @@ export function ExcelPortfolioClient() {
         {/* ===== WORKBOOKS ===== */}
         <div className="space-y-8">
           {excelWorkbooks.map((wb) => (
-            <WorkbookCard key={wb.id} wb={wb} />
+            <WorkbookCard
+              key={wb.id}
+              wb={wb}
+            />
           ))}
         </div>
 
@@ -156,14 +167,12 @@ export function ExcelPortfolioClient() {
           <div className="flex gap-6 text-sm font-medium">
             <a
               href="https://linkedin.com/in/arihazamie"
-              className="text-zinc-500 hover:text-[#ccff00] transition-colors"
-            >
+              className="text-zinc-500 hover:text-[#ccff00] transition-colors">
               LinkedIn
             </a>
             <a
               href="https://github.com/arihazamie"
-              className="text-zinc-500 hover:text-[#ccff00] transition-colors"
-            >
+              className="text-zinc-500 hover:text-[#ccff00] transition-colors">
               GitHub
             </a>
           </div>
@@ -177,7 +186,7 @@ export function ExcelPortfolioClient() {
 // WORKBOOK CARD
 // ==========================================
 function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
-  const [activeTab, setActiveTab] = useState<TabKey>("overview");
+  const [activeTab, setActiveTab] = useState<TabKey>("preview");
 
   return (
     <motion.div
@@ -185,12 +194,13 @@ function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
       initial="initial"
       whileInView="animate"
       viewport={{ once: true }}
-      variants={fadeUp}
-    >
+      variants={fadeUp}>
       {/* formula-bar strip */}
       <div className="border-b border-[#262626] bg-[#0d0d0d] px-6 md:px-10 py-3 flex items-center gap-3 font-mono text-[11px] md:text-xs text-zinc-500 overflow-x-auto">
         <Sigma className="w-3.5 h-3.5 text-[#ccff00] shrink-0" />
-        <span className="whitespace-nowrap">{wb.formulas[0]?.example.trim()}</span>
+        <span className="whitespace-nowrap">
+          {wb.formulas[0]?.example.trim()}
+        </span>
       </div>
 
       <div className="p-6 md:p-10">
@@ -222,8 +232,7 @@ function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
           <a
             href={`/excel-files/${wb.fileName}`}
             download
-            className="inline-flex items-center gap-2 px-5 py-3 bg-[#ccff00] text-black font-bold rounded-xl hover:bg-[#b3e600] transition-colors shrink-0 self-start"
-          >
+            className="inline-flex items-center gap-2 px-5 py-3 bg-[#ccff00] text-black font-bold rounded-xl hover:bg-[#b3e600] transition-colors shrink-0 self-start">
             <Download className="w-4 h-4" /> Download .xlsx
           </a>
         </div>
@@ -237,14 +246,15 @@ function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
           {wb.kpis.map((kpi) => (
             <div
               key={kpi.label}
-              className="bg-[#1a1a1a] border border-[#262626] rounded-xl p-4"
-            >
+              className="bg-[#1a1a1a] border border-[#262626] rounded-xl p-4">
               <div className="text-lg md:text-xl font-bold text-white truncate">
                 {kpi.value}
               </div>
               <div className="text-xs text-zinc-500 mt-1">{kpi.label}</div>
               {kpi.sub && (
-                <div className="text-[10px] text-zinc-600 mt-0.5">{kpi.sub}</div>
+                <div className="text-[10px] text-zinc-600 mt-0.5">
+                  {kpi.sub}
+                </div>
               )}
             </div>
           ))}
@@ -263,8 +273,7 @@ function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
                   active
                     ? "bg-[#1a1a1a] border-[#262626] text-[#ccff00]"
                     : "bg-transparent border-transparent text-zinc-500 hover:text-zinc-300"
-                }`}
-              >
+                }`}>
                 <Icon className="w-3.5 h-3.5" /> {tab.label}
               </button>
             );
@@ -273,6 +282,20 @@ function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
 
         {/* tab content */}
         <div className="bg-[#0d0d0d] border border-[#262626] rounded-2xl p-5 md:p-7">
+          {activeTab === "preview" && (
+            <div className="space-y-3">
+              <iframe
+                src="https://view.officeapps.live.com/op/embed.aspx?src=https://arihazamie.my.id/excel-files/Product-Sales-Region.xlsx"
+                width="100%"
+                height="700px"
+                className="rounded-xl border border-[#262626]"
+                allow="fullscreen"
+              />
+              <p className="text-zinc-500 text-xs text-center">
+                Viewing actual .xlsx file • Opens in Microsoft Office Online
+              </p>
+            </div>
+          )}
           {activeTab === "overview" && <OverviewTab wb={wb} />}
           {activeTab === "raw" && <RawDataTab wb={wb} />}
           {activeTab === "pivot" && <PivotTab wb={wb} />}
@@ -298,8 +321,7 @@ function OverviewTab({ wb }: { wb: ExcelWorkbook }) {
         {wb.sheets.map((sh) => (
           <div
             key={sh.name}
-            className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-3 bg-[#121212] border border-[#262626] rounded-lg"
-          >
+            className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-3 bg-[#121212] border border-[#262626] rounded-lg">
             <span className="font-mono text-xs text-[#ccff00] sm:w-36 shrink-0">
               {sh.name}
             </span>
@@ -318,8 +340,7 @@ function OverviewTab({ wb }: { wb: ExcelWorkbook }) {
         {wb.topPerformers.map((tp) => (
           <div
             key={tp.category}
-            className="p-4 bg-[#121212] border border-[#262626] rounded-xl"
-          >
+            className="p-4 bg-[#121212] border border-[#262626] rounded-xl">
             <div className="text-xs text-zinc-500 mb-1">{tp.category}</div>
             <div className="text-white font-bold mb-1">{tp.winner}</div>
             <div className="text-xs text-zinc-500">{tp.metric}</div>
@@ -334,8 +355,9 @@ function RawDataTab({ wb }: { wb: ExcelWorkbook }) {
   return (
     <div>
       <p className="text-xs text-zinc-500 mb-4">
-        Sample rows from <span className="font-mono text-zinc-400">RAW_DATA</span> —
-        showing 6 of {fmtNum(wb.sheets[0]?.rows ?? 0)} transactions.
+        Sample rows from{" "}
+        <span className="font-mono text-zinc-400">RAW_DATA</span> — showing 6 of{" "}
+        {fmtNum(wb.sheets[0]?.rows ?? 0)} transactions.
       </p>
       <div className="overflow-x-auto">
         <table className="w-full text-xs border-collapse">
@@ -344,8 +366,7 @@ function RawDataTab({ wb }: { wb: ExcelWorkbook }) {
               {wb.previewColumns.map((c) => (
                 <th
                   key={c}
-                  className="text-left font-mono font-medium text-[#ccff00] py-2 pr-4 whitespace-nowrap"
-                >
+                  className="text-left font-mono font-medium text-[#ccff00] py-2 pr-4 whitespace-nowrap">
                   {c}
                 </th>
               ))}
@@ -355,13 +376,11 @@ function RawDataTab({ wb }: { wb: ExcelWorkbook }) {
             {wb.previewRows.map((row, i) => (
               <tr
                 key={i}
-                className="border-b border-[#1a1a1a] hover:bg-[#121212] transition-colors"
-              >
+                className="border-b border-[#1a1a1a] hover:bg-[#121212] transition-colors">
                 {wb.previewColumns.map((c) => (
                   <td
                     key={c}
-                    className="py-2 pr-4 text-zinc-400 whitespace-nowrap"
-                  >
+                    className="py-2 pr-4 text-zinc-400 whitespace-nowrap">
                     {row[c]}
                   </td>
                 ))}
@@ -397,8 +416,7 @@ function PivotTab({ wb }: { wb: ExcelWorkbook }) {
               {wb.pivot.columns.map((c) => (
                 <th
                   key={c}
-                  className="text-right font-mono text-zinc-400 py-2 px-3 border-b border-[#262626]"
-                >
+                  className="text-right font-mono text-zinc-400 py-2 px-3 border-b border-[#262626]">
                   {c}
                 </th>
               ))}
@@ -417,8 +435,7 @@ function PivotTab({ wb }: { wb: ExcelWorkbook }) {
                   <td
                     key={i}
                     className="text-right py-2 px-3 text-zinc-300 font-mono"
-                    style={{ backgroundColor: cellBg(v) }}
-                  >
+                    style={{ backgroundColor: cellBg(v) }}>
                     {fmtNum(v)}
                   </td>
                 ))}
@@ -428,12 +445,13 @@ function PivotTab({ wb }: { wb: ExcelWorkbook }) {
               </tr>
             ))}
             <tr className="border-t border-[#262626]">
-              <td className="py-2 pr-4 font-bold text-[#ccff00]">Grand Total</td>
+              <td className="py-2 pr-4 font-bold text-[#ccff00]">
+                Grand Total
+              </td>
               {wb.pivot.grandTotals.map((v, i) => (
                 <td
                   key={i}
-                  className="text-right py-2 px-3 font-mono text-zinc-400"
-                >
+                  className="text-right py-2 px-3 font-mono text-zinc-400">
                   {fmtNum(v)}
                 </td>
               ))}
@@ -456,13 +474,20 @@ function RankingsTab({ wb }: { wb: ExcelWorkbook }) {
         {rows.map((r) => (
           <div
             key={r.name}
-            className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-3 bg-[#121212] border border-[#262626] rounded-lg text-sm"
-          >
-            <span className="font-mono text-[#ccff00] w-8 shrink-0">{r.rank}</span>
-            <span className="font-medium text-white w-32 shrink-0">{r.name}</span>
+            className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-3 bg-[#121212] border border-[#262626] rounded-lg text-sm">
+            <span className="font-mono text-[#ccff00] w-8 shrink-0">
+              {r.rank}
+            </span>
+            <span className="font-medium text-white w-32 shrink-0">
+              {r.name}
+            </span>
             <span className="text-zinc-400 w-28 shrink-0">{r.revenue}</span>
-            <span className="text-zinc-500 w-20 shrink-0">{r.orders} orders</span>
-            <span className="text-zinc-500 w-16 shrink-0">{r.returnRate} ret.</span>
+            <span className="text-zinc-500 w-20 shrink-0">
+              {r.orders} orders
+            </span>
+            <span className="text-zinc-500 w-16 shrink-0">
+              {r.returnRate} ret.
+            </span>
             <span className="text-zinc-500 text-xs">{r.note}</span>
           </div>
         ))}
@@ -472,8 +497,14 @@ function RankingsTab({ wb }: { wb: ExcelWorkbook }) {
 
   return (
     <div>
-      <Table title="Product performance" rows={wb.productRanking} />
-      <Table title="Region performance" rows={wb.regionRanking} />
+      <Table
+        title="Product performance"
+        rows={wb.productRanking}
+      />
+      <Table
+        title="Region performance"
+        rows={wb.regionRanking}
+      />
     </div>
   );
 }
@@ -484,8 +515,7 @@ function FormulasTab({ wb }: { wb: ExcelWorkbook }) {
       {wb.formulas.map((f) => (
         <div
           key={f.formula}
-          className="p-4 bg-[#121212] border border-[#262626] rounded-lg"
-        >
+          className="p-4 bg-[#121212] border border-[#262626] rounded-lg">
           <div className="flex flex-wrap items-center gap-2 mb-1.5">
             <span className="px-2.5 py-1 bg-[#1a1a1a] border border-[#ccff00]/30 text-[#ccff00] font-mono text-xs rounded-md">
               {f.formula}
@@ -513,8 +543,7 @@ function InsightsTab({ wb }: { wb: ExcelWorkbook }) {
         {wb.redFlags.map((flag) => (
           <div
             key={flag.issue}
-            className={`p-4 rounded-lg border ${severityStyle[flag.severity]}`}
-          >
+            className={`p-4 rounded-lg border ${severityStyle[flag.severity]}`}>
             <div className="flex items-center gap-2 mb-1.5">
               {flag.severity === "opportunity" ? (
                 <CheckCircle2 className="w-3.5 h-3.5" />
@@ -526,7 +555,8 @@ function InsightsTab({ wb }: { wb: ExcelWorkbook }) {
               </span>
             </div>
             <p className="text-sm font-medium text-zinc-200 mb-1">
-              {flag.issue} — <span className="font-normal text-zinc-400">{flag.data}</span>
+              {flag.issue} —{" "}
+              <span className="font-normal text-zinc-400">{flag.data}</span>
             </p>
             <p className="text-xs text-zinc-500 flex items-start gap-1.5">
               <ChevronRight className="w-3.5 h-3.5 shrink-0 mt-0.5" />
