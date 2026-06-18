@@ -202,7 +202,7 @@ function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
       className="bg-[#121212] border border-[#262626] rounded-[2rem] overflow-hidden"
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-50px" }}
       variants={fadeUp}>
       {/* formula-bar strip */}
       <div className="border-b border-[#262626] bg-[#0d0d0d] px-6 md:px-10 py-3 flex items-center gap-3 font-mono text-[11px] md:text-xs text-zinc-500 overflow-x-auto">
