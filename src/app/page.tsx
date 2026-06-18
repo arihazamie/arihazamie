@@ -221,45 +221,10 @@ export default function DarkBentoPortfolio() {
             </div>
           </AnimatedSection>
 
-          {/* 6. SKILLS — onView, delay 0.1, col-span-7 */}
+          {/* 6. EDUCATION — onView, delay 0.1, col-span-7 */}
           <AnimatedSection
             animate="onView"
             delay={0.1}
-            className="md:col-span-7 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[22rem] h-[22rem] bg-orange-500/5 rounded-full blur-[90px] -mr-28 -mt-28 pointer-events-none" />
-            <h2 className="text-2xl font-bold text-white mb-8">
-              Skills & Expertise
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {skills.map((skill, i) => (
-                <div
-                  key={i}
-                  className="space-y-4">
-                  <div className="flex items-center gap-3 text-white font-bold">
-                    <div className="p-2 bg-[#1a1a1a] border border-[#262626] rounded-lg text-[#ccff00]">
-                      {SKILL_ICONS[skill.iconName]}
-                    </div>
-                    {skill.category}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {skill.items.map((item) => (
-                      <span
-                        key={item}
-                        className="px-3 py-1.5 bg-[#1a1a1a] border border-[#262626] text-zinc-400 text-sm rounded-lg hover:text-[#ccff00] transition-colors cursor-default">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-
-          {/* ── ROW 4 ── */}
-
-          {/* 7. EDUCATION — onView, col-span-7 */}
-          <AnimatedSection
-            animate="onView"
             className="md:col-span-7 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
             <div className="absolute bottom-0 left-0 w-[20rem] h-[20rem] bg-emerald-500/5 rounded-full blur-[80px] -ml-24 -mb-24 pointer-events-none" />
             <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
@@ -298,6 +263,41 @@ export default function DarkBentoPortfolio() {
                       ))}
                     </ul>
                   )}
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+
+          {/* ── ROW 4 ── */}
+
+          {/* 7. SKILLS — onView, col-span-7 */}
+          <AnimatedSection
+            animate="onView"
+            className="md:col-span-7 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[22rem] h-[22rem] bg-orange-500/5 rounded-full blur-[90px] -mr-28 -mt-28 pointer-events-none" />
+            <h2 className="text-2xl font-bold text-white mb-8">
+              Skills & Expertise
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {skills.map((skill, i) => (
+                <div
+                  key={i}
+                  className="space-y-4">
+                  <div className="flex items-center gap-3 text-white font-bold">
+                    <div className="p-2 bg-[#1a1a1a] border border-[#262626] rounded-lg text-[#ccff00]">
+                      {SKILL_ICONS[skill.iconName]}
+                    </div>
+                    {skill.category}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {skill.items.map((item) => (
+                      <span
+                        key={item}
+                        className="px-3 py-1.5 bg-[#1a1a1a] border border-[#262626] text-zinc-400 text-sm rounded-lg hover:text-[#ccff00] transition-colors cursor-default">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
