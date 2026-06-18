@@ -27,6 +27,9 @@ import { websiteProjects } from "@/data/website-portfolio";
 import { HeroSection } from "@/components/hero-section";
 import { AnimatedSection } from "@/components/animated-section";
 
+// ─── Static cache — portfolio never changes at runtime ────────────────────────
+export const dynamic = "force-static";
+
 // ─── Icon map (server-safe) ───────────────────────────────────────────────────
 const SKILL_ICONS: Record<Skill["iconName"], React.ReactNode> = {
   BarChart3: <BarChart3 className="w-5 h-5" />,

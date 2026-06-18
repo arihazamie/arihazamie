@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -187,6 +187,15 @@ export function ExcelPortfolioClient() {
 // ==========================================
 function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
   const [activeTab, setActiveTab] = useState<TabKey>("preview");
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [iframeError, setIframeError] = useState(false);
+
+  useEffect(() => {
+    if (activeTab !== "preview") {
+      setIframeLoaded(false);
+      setIframeError(false);
+    }
+  }, [activeTab]);
 
   return (
     <motion.div
@@ -261,7 +270,9 @@ function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
         </div>
 
         {/* sheet tabs */}
-        <div className="flex gap-1.5 overflow-x-auto pb-px border-b border-[#262626] mb-6">
+        <div
+          className="flex gap-1.5 overflow-x-auto pb-px border-b border-[#262626] mb-6 -mx-1 px-1"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
           {TABS.map((tab) => {
             const Icon = tab.icon;
             const active = activeTab === tab.key;
@@ -284,15 +295,90 @@ function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
         <div className="bg-[#0d0d0d] border border-[#262626] rounded-2xl p-5 md:p-7">
           {activeTab === "preview" && (
             <div className="space-y-3">
-              <iframe
-                src="https://view.officeapps.live.com/op/embed.aspx?src=https://arihazamie.my.id/excel-files/Product-Sales-Region.xlsx"
-                width="100%"
-                height="700px"
-                className="rounded-xl border border-[#262626]"
-                allow="fullscreen"
-              />
-              <p className="text-zinc-500 text-xs text-center">
-                Viewing actual .xlsx file • Opens in Microsoft Office Online
+              {/* Header bar */}
+              <div className="bg-[#1a1a1a] border border-[#262626] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <FileSpreadsheet className="w-5 h-5 text-[#ccff00] shrink-0" />
+                  <span className="text-sm font-medium text-zinc-300">
+                    {wb.fileName}
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#ccff00]/10 border border-[#ccff00]/30 text-[#ccff00] text-xs font-semibold rounded-md">
+                    Live Preview
+                  </span>
+                </div>
+                <a
+                  href={`/excel-files/${wb.fileName}`}
+                  download
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#ccff00] text-black font-bold rounded-lg text-sm hover:bg-[#b3e600] transition-colors shrink-0 self-start sm:self-auto">
+                  <Download className="w-4 h-4" /> Download
+                </a>
+              </div>
+
+              {/* Iframe wrapper with skeleton overlay */}
+              <div className="relative rounded-xl overflow-hidden">
+                {/* Loading skeleton — shown until iframe loads or errors */}
+                {!iframeLoaded && !iframeError && (
+                  <div
+                    className="w-full rounded-xl border border-[#262626] bg-[#1a1a1a] animate-pulse flex flex-col items-center justify-center gap-4 text-zinc-600"
+                    style={{
+                      height: "calc(100vh - 280px)",
+                      minHeight: "500px",
+                    }}>
+                    <FileSpreadsheet className="w-12 h-12 animate-bounce" />
+                    <p className="text-sm">Loading Excel file...</p>
+                    <p className="text-xs">
+                      Powered by Microsoft Office Online
+                    </p>
+                  </div>
+                )}
+
+                {/* Error state */}
+                {iframeError && (
+                  <div
+                    className="w-full rounded-xl border border-[#262626] bg-[#1a1a1a] flex flex-col items-center justify-center gap-4 text-zinc-500"
+                    style={{
+                      height: "calc(100vh - 280px)",
+                      minHeight: "500px",
+                    }}>
+                    <AlertTriangle className="w-12 h-12 text-amber-400" />
+                    <p className="text-sm font-medium text-white">
+                      Preview tidak tersedia
+                    </p>
+                    <p className="text-xs text-center max-w-xs">
+                      Microsoft Office Online tidak dapat memuat file. Klik
+                      tombol Download di atas untuk membuka file secara lokal.
+                    </p>
+                  </div>
+                )}
+
+                {/* Iframe — always in DOM, opacity-driven visibility */}
+                <iframe
+                  src={`https://view.officeapps.live.com/op/embed.aspx?src=https://arihazamie.my.id/excel-files/${wb.fileName}`}
+                  style={{
+                    width: "100%",
+                    height: "calc(100vh - 280px)",
+                    minHeight: "500px",
+                    opacity: iframeLoaded ? 1 : 0,
+                    transition: "opacity 0.4s ease",
+                    border: "none",
+                    display: iframeError ? "none" : "block",
+                  }}
+                  className="rounded-xl border border-[#262626]"
+                  allow="fullscreen"
+                  onLoad={() => setIframeLoaded(true)}
+                  onError={() => setIframeError(true)}
+                />
+              </div>
+
+              {/* Footer caption */}
+              <p className="text-zinc-600 text-xs text-center mt-2">
+                Viewing actual .xlsx file via Microsoft Office Online •{" "}
+                <a
+                  href={`/excel-files/${wb.fileName}`}
+                  download
+                  className="text-zinc-400 hover:text-[#ccff00] transition-colors">
+                  Download file
+                </a>
               </p>
             </div>
           )}

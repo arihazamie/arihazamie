@@ -149,7 +149,7 @@ function ProjectCard({ project }: { project: WebsiteProject }) {
       className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 relative overflow-hidden"
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-50px" }}
       variants={fadeUp}>
       {/* Per-project gradient overlay */}
       <div
