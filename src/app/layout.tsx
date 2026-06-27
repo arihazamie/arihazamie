@@ -5,6 +5,7 @@ import "./globals.css";
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta-sans",
   subsets: ["latin"],
+  display: "swap", // ← prevent FOIT: text stays visible while font loads
 });
 
 const BASE_URL = "https://arihazamie.my.id";
@@ -109,6 +110,17 @@ export default function RootLayout({
       lang="id"
       className="scroll-smooth">
       <head>
+        {/* ── DNS prefetch for Excel iframe domain ── */}
+        <link
+          rel="preconnect"
+          href="https://view.officeapps.live.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://view.officeapps.live.com"
+        />
+
         {/* ── JSON-LD Structured Data (Google Knowledge Panel) ── */}
         <script
           type="application/ld+json"

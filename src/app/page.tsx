@@ -59,7 +59,8 @@ export default function DarkBentoPortfolio() {
             delay={0.1}
             className="md:col-span-5 flex flex-col gap-4 md:gap-6">
             <div className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 flex-1 flex flex-col justify-center relative group overflow-hidden hover:border-[#333] transition-colors">
-              <div className="absolute top-0 right-0 w-[16rem] h-[16rem] bg-violet-500/5 rounded-full blur-[80px] -mr-20 -mt-20 pointer-events-none" />
+              {/* Reduced blur radius + GPU-composited layer */}
+              <div className="absolute top-0 right-0 w-[16rem] h-[16rem] bg-violet-500/5 rounded-full blur-[60px] -mr-20 -mt-20 pointer-events-none will-change-transform transform-gpu" />
               <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
                 <Terminal className="w-5 h-5 text-[#ccff00]" /> Social Profiles
               </h3>
@@ -85,7 +86,8 @@ export default function DarkBentoPortfolio() {
               </div>
             </div>
 
-            <div className="bg-[#ccff00] rounded-[2rem] p-8 text-black flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+            {/* CTA card — transform-gpu so scale runs on compositor thread */}
+            <div className="bg-[#ccff00] rounded-[2rem] p-8 text-black flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer transform-gpu">
               <h3 className="text-2xl font-bold leading-tight mb-4">
                 Need a dev, analyst, <br /> or finance pro?
               </h3>
@@ -103,7 +105,8 @@ export default function DarkBentoPortfolio() {
           <AnimatedSection
             animate="onView"
             className="md:col-span-6 bg-[#121212] border border-[#262626] hover:border-[#ccff00]/30 transition-colors rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-[24rem] h-[24rem] bg-[#ccff00]/5 rounded-full blur-[100px] -ml-32 -mt-32 pointer-events-none" />
+            {/* Reduced blur radius + GPU layer */}
+            <div className="absolute top-0 left-0 w-[24rem] h-[24rem] bg-[#ccff00]/5 rounded-full blur-[60px] -ml-32 -mt-32 pointer-events-none will-change-transform transform-gpu" />
             <div className="flex flex-col justify-between min-h-[280px] relative">
               <div>
                 <h2 className="text-2xl font-bold text-white mb-3 flex items-center gap-3">
@@ -146,7 +149,8 @@ export default function DarkBentoPortfolio() {
             animate="onView"
             delay={0.1}
             className="md:col-span-6 bg-[#121212] border border-[#262626] hover:border-[#ccff00]/30 transition-colors rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[24rem] h-[24rem] bg-blue-500/5 rounded-full blur-[100px] -mr-32 -mt-32 pointer-events-none" />
+            {/* Reduced blur radius + GPU layer */}
+            <div className="absolute top-0 right-0 w-[24rem] h-[24rem] bg-blue-500/5 rounded-full blur-[60px] -mr-32 -mt-32 pointer-events-none will-change-transform transform-gpu" />
             <div className="flex flex-col justify-between min-h-[280px] relative">
               <div>
                 <h2 className="text-2xl font-bold text-white mb-3 flex items-center gap-3">
@@ -187,7 +191,8 @@ export default function DarkBentoPortfolio() {
           <AnimatedSection
             animate="onView"
             className="md:col-span-5 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[20rem] h-[20rem] bg-blue-500/5 rounded-full blur-[80px] -mr-24 -mt-24 pointer-events-none" />
+            {/* Reduced blur radius + GPU layer */}
+            <div className="absolute top-0 right-0 w-[20rem] h-[20rem] bg-blue-500/5 rounded-full blur-[60px] -mr-24 -mt-24 pointer-events-none will-change-transform transform-gpu" />
             <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
               <Briefcase className="w-6 h-6 text-[#ccff00]" /> Experience
             </h2>
@@ -226,7 +231,8 @@ export default function DarkBentoPortfolio() {
             animate="onView"
             delay={0.1}
             className="md:col-span-7 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
-            <div className="absolute bottom-0 left-0 w-[20rem] h-[20rem] bg-emerald-500/5 rounded-full blur-[80px] -ml-24 -mb-24 pointer-events-none" />
+            {/* Reduced blur radius + GPU layer */}
+            <div className="absolute bottom-0 left-0 w-[20rem] h-[20rem] bg-emerald-500/5 rounded-full blur-[60px] -ml-24 -mb-24 pointer-events-none will-change-transform transform-gpu" />
             <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
               <GraduationCap className="w-6 h-6 text-[#ccff00]" /> Education
             </h2>
@@ -274,7 +280,8 @@ export default function DarkBentoPortfolio() {
           <AnimatedSection
             animate="onView"
             className="md:col-span-7 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[22rem] h-[22rem] bg-orange-500/5 rounded-full blur-[90px] -mr-28 -mt-28 pointer-events-none" />
+            {/* Reduced blur radius + GPU layer */}
+            <div className="absolute top-0 right-0 w-[22rem] h-[22rem] bg-orange-500/5 rounded-full blur-[60px] -mr-28 -mt-28 pointer-events-none will-change-transform transform-gpu" />
             <h2 className="text-2xl font-bold text-white mb-8">
               Skills & Expertise
             </h2>
@@ -308,7 +315,8 @@ export default function DarkBentoPortfolio() {
             animate="onView"
             delay={0.1}
             className="md:col-span-5 bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 flex flex-col relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[18rem] h-[18rem] bg-pink-500/5 rounded-full blur-[80px] -mr-20 -mt-20 pointer-events-none" />
+            {/* Reduced blur radius + GPU layer */}
+            <div className="absolute top-0 right-0 w-[18rem] h-[18rem] bg-pink-500/5 rounded-full blur-[60px] -mr-20 -mt-20 pointer-events-none will-change-transform transform-gpu" />
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
               <GraduationCap className="w-6 h-6 text-[#ccff00]" /> Certification
             </h2>

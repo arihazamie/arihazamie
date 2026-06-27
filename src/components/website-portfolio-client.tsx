@@ -1,8 +1,8 @@
-// FILE: src/components/website-portfolio-client.tsx
 "use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { memo } from "react";
 import {
   ArrowLeft,
   Globe,
@@ -20,7 +20,7 @@ import { websiteProjects, type WebsiteProject } from "@/data/website-portfolio";
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: "easeOut" as const },
+  transition: { duration: 0.35, ease: "easeOut" as const },
 };
 
 const statusStyle: Record<WebsiteProject["status"], string> = {
@@ -56,7 +56,7 @@ export function WebsitePortfolioClient() {
           initial="initial"
           animate="animate"
           variants={fadeUp}>
-          <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-blue-500/5 rounded-full blur-[100px] -mr-40 -mt-40 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-blue-500/5 rounded-full blur-[60px] -mr-40 -mt-40 pointer-events-none will-change-transform transform-gpu" />
 
           <Badge className="w-fit mb-6 px-4 py-1.5 bg-[#1a1a1a] border-[#333] text-zinc-300 rounded-full text-sm">
             <Globe className="w-3.5 h-3.5 text-[#ccff00] mr-2" />
@@ -141,19 +141,23 @@ export function WebsitePortfolioClient() {
 }
 
 // ==========================================
-// PROJECT CARD
+// PROJECT CARD — memoized to prevent re-renders when parent updates
 // ==========================================
-function ProjectCard({ project }: { project: WebsiteProject }) {
+const ProjectCard = memo(function ProjectCard({
+  project,
+}: {
+  project: WebsiteProject;
+}) {
   return (
     <motion.div
       className="bg-[#121212] border border-[#262626] rounded-[2rem] p-8 md:p-10 relative overflow-hidden"
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-80px" }}
       variants={fadeUp}>
       {/* Per-project gradient overlay */}
       <div
-        className={`absolute top-0 right-0 w-[28rem] h-[28rem] bg-gradient-to-bl ${project.gradient} rounded-full blur-[120px] -mr-40 -mt-40 pointer-events-none`}
+        className={`absolute top-0 right-0 w-[28rem] h-[28rem] bg-gradient-to-bl ${project.gradient} rounded-full blur-[60px] -mr-40 -mt-40 pointer-events-none will-change-transform transform-gpu`}
       />
 
       <div className="relative">
@@ -247,4 +251,4 @@ function ProjectCard({ project }: { project: WebsiteProject }) {
       </div>
     </motion.div>
   );
-}
+});
