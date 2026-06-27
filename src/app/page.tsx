@@ -87,12 +87,12 @@ export default function DarkBentoPortfolio() {
 
             <div className="bg-[#ccff00] rounded-[2rem] p-8 text-black flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
               <h3 className="text-2xl font-bold leading-tight mb-4">
-                Looking to hire <br /> a finance specialist?
+                Need a dev, analyst, <br /> or finance pro?
               </h3>
               <a
                 href={`mailto:${personalInfo.contact.email}`}
                 className="inline-flex items-center gap-2 font-bold text-lg">
-                Email Me <ArrowUpRight className="w-5 h-5" />
+                Let&apos;s Talk <ArrowUpRight className="w-5 h-5" />
               </a>
             </div>
           </AnimatedSection>
@@ -115,8 +115,8 @@ export default function DarkBentoPortfolio() {
                   executive report: data cleaning, a live lookup table, a pivot
                   analysis, a KPI dashboard built on
                   SUMIFS/INDEX-MATCH/SUMPRODUCT, and a written business
-                  recommendation — the same spreadsheet discipline I bring to
-                  village financial reporting.
+                  recommendation — a showcase of real-world spreadsheet and data
+                  analysis discipline.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {[

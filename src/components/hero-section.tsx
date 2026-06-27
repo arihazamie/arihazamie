@@ -40,8 +40,8 @@ export function HeroSection({ name, summary, email, location }: HeroProps) {
       </Badge>
 
       <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
-        Finance & Accounting <br />
-        <span className="text-[#ccff00]">specialist.</span>
+        Developer. Analyst. <br />
+        <span className="text-[#ccff00]">Finance.</span>
       </h1>
 
       <p className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-10 text-justify">

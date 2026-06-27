@@ -36,9 +36,9 @@ export type Certificate = {
 
 export const personalInfo = {
   name: "Ari Hazamie",
-  title: "Finance & Accounting Specialist",
+  title: "Full-Stack Developer · Data Analyst · Finance",
   summary:
-    "Information Systems graduate with hands-on experience in village financial management as Head of Finance. Expert in managing the full financial cycle using Siskeudes — from inputting RAB/APBDes, recording SPP/SPM, maintaining the General Cash Book (BKU), to preparing Budget Implementation Reports (LRA) and Accountability Reports (SPJ). Combines financial discipline with data analysis skills using Python and SQL for accurate, systematic financial reporting.",
+    "Information Systems graduate with hands-on experience in full-stack web development, data analysis, and government financial management. Skilled in building production-ready web apps with Next.js and PostgreSQL, analyzing data with Python, SQL, and Excel, and managing the full financial cycle using Siskeudes — from budget planning (APBDes/RAB) to accountability reporting (LRA, SPJ). Open to opportunities in web development, data analysis, or finance & accounting.",
   contact: {
     email: "arihzmiutama@gmail.com",
     location: "Merangin, Jambi",
@@ -56,11 +56,11 @@ export const experience: Experience[] = [
     period: "Oct 2025 – Apr 2026",
     location: "Merangin, Jambi",
     description: [
-      "Fully operated the Siskeudes application — including inputting RAB/APBDes, recording SPP/SPM, maintaining the General Cash Book (BKU), and preparing the Budget Implementation Report (LRA).",
-      "Managed village fund disbursements through the banking system every 3 months with transaction values ranging from Rp100 million to Rp250 million, including check withdrawals and bank statement retrievals.",
-      "Prepared Accountability Reports (SPJ) and printed village financial reports as a form of accountability to the local government.",
+      "Managed the village financial cycle end-to-end using Siskeudes — including budget planning (RAB/APBDes), expenditure authorization (SPP/SPM), maintenance of the General Cash Book (BKU), and quarterly preparation of the Budget Implementation Report (LRA).",
+      "Managed village fund disbursements through the banking system every quarter with transaction values ranging from Rp100 million to Rp250 million, including check withdrawals and bank statement reconciliations.",
+      "Prepared Accountability Reports (SPJ) and village financial statements as a form of fiscal accountability to the local government, ensuring all documents comply with applicable reporting standards.",
       "Managed the disbursement and distribution of Direct Cash Assistance (BLT) to eligible beneficiaries in accordance with applicable regulations.",
-      "Verified consistency of financial data against transaction records to ensure accuracy in village financial recording and reporting.",
+      "Systematically cross-verified financial data against transaction evidence to maintain data integrity and meet local government audit standards.",
     ],
   },
   {
@@ -69,9 +69,8 @@ export const experience: Experience[] = [
     period: "Jan 2020 – Apr 2020",
     location: "Kota Jambi, Jambi",
     description: [
-      "Designed various visual materials using CorelDRAW, including banners, billboards, and flags.",
-      "Created print media designs such as Yasin booklets and company ID cards, tailored to client specifications.",
-      "Coordinated with the production team to ensure designs matched printed output with optimal quality.",
+      "Produced print-ready materials tailored to client needs with optimal quality standards using CorelDRAW, including banners, billboards, flags, Yasin booklets, and company ID cards.",
+      "Developed attention to detail and deadline management skills across various professional design settings.",
     ],
   },
 ];
@@ -79,6 +78,33 @@ export const experience: Experience[] = [
 // ─── Skills ──────────────────────────────────────────────────────────────────
 
 export const skills: Skill[] = [
+  {
+    category: "Web Development",
+    iconName: "Terminal",
+    items: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma ORM",
+      "NextAuth.js",
+      "REST API",
+      "Tailwind CSS",
+      "Vercel",
+      "Google Cloud Platform",
+    ],
+  },
+  {
+    category: "Data & Analysis",
+    iconName: "Database",
+    items: [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "SQL",
+      "Excel (VLOOKUP, Pivot Table, SUMIFS, INDEX-MATCH)",
+    ],
+  },
   {
     category: "Finance & Accounting",
     iconName: "BarChart3",
@@ -92,24 +118,7 @@ export const skills: Skill[] = [
       "BLT",
       "Financial Reporting",
       "Transaction Reconciliation",
-      "Budget Execution Analysis",
-    ],
-  },
-  {
-    category: "Data Analysis",
-    iconName: "Database",
-    items: ["Python", "Pandas", "NumPy", "SQL", "PostgreSQL", "Excel"],
-  },
-  {
-    category: "Tools & Software",
-    iconName: "Terminal",
-    items: [
-      "Microsoft Excel",
-      "Microsoft Word",
-      "CorelDRAW",
-      "Canva",
-      "Next.js",
-      "TypeScript",
+      "Accurate 5 Desktop",
     ],
   },
 ];
@@ -120,19 +129,28 @@ export const education: Education[] = [
   {
     institution: "Universitas Putra Indonesia YPTK Padang",
     location: "Padang, West Sumatra",
-    degree: "Bachelor of Information Systems",
-    period: "Aug 2021 - Oct 2025",
+    degree: "Bachelor of Information Systems — GPA 3.20 / 4.00",
+    period: "Aug 2021 – Oct 2025",
     description: [
       "Strengthened skills in system development, data management, and problem-solving through a combination of academic study and practical projects throughout the program.",
     ],
   },
   {
-    institution: "Bangkit Academy (by Google, GoTo, Traveloka) - MSIB Program",
+    institution: "Bangkit Academy (by Google, GoTo, Traveloka) — MSIB Program",
     location: "Remote (Online)",
     degree: "Cloud Computing Learning Path",
-    period: "Sep 2024 - Dec 2024",
+    period: "Sep 2024 – Dec 2024",
     description: [
       "Completed an industry-focused intensive program centered on cloud computing, backend development, and DevOps practices using Google Cloud Platform. Developed RESTful APIs, deployed applications using Cloud Run, and managed cloud-based databases in a team-based capstone project.",
+    ],
+  },
+  {
+    institution: "SMK Negeri 1 Merangin",
+    location: "Bangko, Merangin",
+    degree: "Computer Engineering & Computer Science — Multimedia | 84.15",
+    period: "Jun 2018 – Jun 2021",
+    description: [
+      "Studied graphic design using CorelDRAW, poster design, and short film production. Completed the Skills Competency Test (UKK) with a focus on practical photography.",
     ],
   },
 ];

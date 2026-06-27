@@ -14,30 +14,29 @@ export const metadata: Metadata = {
 
   // ── Title ──────────────────────────────────────────────────────────
   title: {
-    default: "Ari Hazamie | Finance & Accounting Specialist",
+    default: "Ari Hazamie | Portfolio",
     template: "%s | Ari Hazamie",
   },
 
   // ── Description ────────────────────────────────────────────────────
   description:
-    "Ari Hazamie – Finance & Accounting Specialist dan Information Systems graduate. Berpengalaman dalam pengelolaan keuangan desa menggunakan Siskeudes (SPP/SPM, BKU, LRA, APBDes, SPJ), pelaporan keuangan, rekonsiliasi transaksi, dan analisis data dengan Python & SQL.",
+    "Ari Hazamie – Information Systems graduate dan Cloud Computing certified (Bangkit Academy by Google, GoTo, Traveloka). Membangun aplikasi web full-stack dengan Next.js, TypeScript, dan PostgreSQL. Berpengalaman dalam analisis data menggunakan Python dan SQL, serta pengelolaan sistem keuangan nyata.",
 
   // ── Keywords ───────────────────────────────────────────────────────
   keywords: [
     "Ari Hazamie",
     "arihazamie",
-    "Finance Specialist",
-    "Accounting Specialist",
-    "Siskeudes",
-    "Keuangan Desa",
-    "SPJ",
-    "APBDes",
-    "BKU",
-    "LRA",
-    "SPP SPM",
-    "Financial Reporting",
-    "Data Analyst",
     "Information Systems",
+    "Full Stack Developer",
+    "Next.js Developer",
+    "Cloud Computing",
+    "Bangkit Academy",
+    "Data Analyst",
+    "Python",
+    "SQL",
+    "PostgreSQL",
+    "TypeScript",
+    "Web Developer",
     "Merangin Jambi",
     "Portfolio Ari Hazamie",
   ],
@@ -57,16 +56,16 @@ export const metadata: Metadata = {
     type: "website",
     url: BASE_URL,
     siteName: "Ari Hazamie Portfolio",
-    title: "Ari Hazamie | Finance & Accounting Specialist",
+    title: "Ari Hazamie | Portfolio",
     description:
-      "Portfolio resmi Ari Hazamie – Finance & Accounting Specialist dengan keahlian Siskeudes, pelaporan keuangan desa, dan analisis data.",
+      "Portfolio resmi Ari Hazamie – IS graduate dan Cloud Computing certified. Membangun web app full-stack, analisis data dengan Python & SQL, dan berpengalaman dalam sistem keuangan nyata.",
     locale: "id_ID",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Ari Hazamie – Finance & Accounting Specialist",
+        alt: "Ari Hazamie – Portfolio",
       },
     ],
   },
@@ -74,9 +73,9 @@ export const metadata: Metadata = {
   // ── Twitter Card ───────────────────────────────────────────────────
   twitter: {
     card: "summary_large_image",
-    title: "Ari Hazamie | Finance & Accounting Specialist",
+    title: "Ari Hazamie | Portfolio",
     description:
-      "Portfolio resmi Ari Hazamie – Finance & Accounting Specialist dengan keahlian Siskeudes, pelaporan keuangan desa, dan analisis data.",
+      "Portfolio resmi Ari Hazamie – IS graduate dan Cloud Computing certified. Membangun web app full-stack, analisis data dengan Python & SQL, dan berpengalaman dalam sistem keuangan nyata.",
     images: ["/og-image.png"],
   },
 
@@ -93,7 +92,7 @@ export const metadata: Metadata = {
     },
   },
 
-  // ── Google Site Verification (isi nanti setelah daftar Google Search Console) ──
+  // ── Google Site Verification ──
   verification: {
     google:
       "google-site-verification=C_8pI9mZFb3Yr1fxbrIInHK8HCnv-ToYm8fjzI55ExAda",
@@ -121,9 +120,9 @@ export default function RootLayout({
               alternateName: "arihazamie",
               url: BASE_URL,
               email: "arihzmiutama@gmail.com",
-              jobTitle: "Finance & Accounting Specialist",
+              jobTitle: "Information Systems Graduate",
               description:
-                "Finance & Accounting Specialist dan Information Systems graduate berpengalaman dalam pengelolaan keuangan desa menggunakan Siskeudes.",
+                "Information Systems graduate certified in Cloud Computing by Bangkit Academy (Google, GoTo, Traveloka). Builds full-stack web applications and applies data analysis skills using Python, SQL, and Excel.",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Merangin",
@@ -136,14 +135,16 @@ export default function RootLayout({
                 BASE_URL,
               ],
               knowsAbout: [
-                "Siskeudes",
-                "Keuangan Desa",
-                "Financial Reporting",
-                "APBDes",
-                "SPJ",
-                "Data Analysis",
+                "Next.js",
+                "TypeScript",
+                "PostgreSQL",
+                "Cloud Computing",
+                "Google Cloud Platform",
                 "Python",
                 "SQL",
+                "Data Analysis",
+                "RESTful API",
+                "Web Development",
               ],
             }),
           }}
