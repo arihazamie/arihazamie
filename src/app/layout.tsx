@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import WelcomeIntro from "@/components/welcome-intro";
 
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta-sans",
@@ -172,7 +173,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${jakartaSans.variable} font-sans antialiased`}>
-        {children}
+        <WelcomeIntro>{children}</WelcomeIntro>
       </body>
     </html>
   );
