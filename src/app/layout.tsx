@@ -8,7 +8,7 @@ const jakartaSans = Plus_Jakarta_Sans({
   display: "swap", // ← prevent FOIT: text stays visible while font loads
 });
 
-const BASE_URL = "https://arihazamie.my.id";
+const BASE_URL = "https://arihazamie.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -21,23 +21,29 @@ export const metadata: Metadata = {
 
   // ── Description ────────────────────────────────────────────────────
   description:
-    "Ari Hazamie – Information Systems graduate dan Cloud Computing certified (Bangkit Academy by Google, GoTo, Traveloka). Membangun aplikasi web full-stack dengan Next.js, TypeScript, dan PostgreSQL. Berpengalaman dalam analisis data menggunakan Python dan SQL, serta pengelolaan sistem keuangan nyata.",
+    "Ari Hazamie – Finance & Accounting Specialist dan Information Systems graduate. Berpengalaman dalam pengelolaan keuangan desa menggunakan Siskeudes (SPP/SPM, BKU, LRA, APBDes, SPJ), pelaporan keuangan, rekonsiliasi transaksi, serta membangun aplikasi web full-stack dengan Next.js, TypeScript, dan PostgreSQL.",
 
   // ── Keywords ───────────────────────────────────────────────────────
   keywords: [
     "Ari Hazamie",
     "arihazamie",
+    "Finance & Accounting Specialist",
+    "Siskeudes",
+    "Keuangan Desa",
+    "SPP SPM",
+    "BKU",
+    "LRA",
+    "APBDes",
+    "SPJ",
+    "Financial Reporting",
     "Information Systems",
     "Full Stack Developer",
     "Next.js Developer",
-    "Cloud Computing",
-    "Bangkit Academy",
     "Data Analyst",
     "Python",
     "SQL",
     "PostgreSQL",
     "TypeScript",
-    "Web Developer",
     "Merangin Jambi",
     "Portfolio Ari Hazamie",
   ],
@@ -59,7 +65,7 @@ export const metadata: Metadata = {
     siteName: "Ari Hazamie Portfolio",
     title: "Ari Hazamie | Portfolio",
     description:
-      "Portfolio resmi Ari Hazamie – IS graduate dan Cloud Computing certified. Membangun web app full-stack, analisis data dengan Python & SQL, dan berpengalaman dalam sistem keuangan nyata.",
+      "Finance & Accounting Specialist dan Information Systems graduate. Berpengalaman dalam pengelolaan keuangan desa menggunakan Siskeudes (SPP/SPM, BKU, LRA, APBDes, SPJ) serta membangun web app full-stack dengan Next.js & PostgreSQL.",
     locale: "id_ID",
     images: [
       {
@@ -76,7 +82,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ari Hazamie | Portfolio",
     description:
-      "Portfolio resmi Ari Hazamie – IS graduate dan Cloud Computing certified. Membangun web app full-stack, analisis data dengan Python & SQL, dan berpengalaman dalam sistem keuangan nyata.",
+      "Finance & Accounting Specialist dan Information Systems graduate. Berpengalaman dalam pengelolaan keuangan desa menggunakan Siskeudes (SPP/SPM, BKU, LRA, APBDes, SPJ) serta membangun web app full-stack dengan Next.js & PostgreSQL.",
     images: ["/og-image.png"],
   },
 
@@ -132,9 +138,9 @@ export default function RootLayout({
               alternateName: "arihazamie",
               url: BASE_URL,
               email: "arihzmiutama@gmail.com",
-              jobTitle: "Information Systems Graduate",
+              jobTitle: "Finance & Accounting Specialist",
               description:
-                "Information Systems graduate certified in Cloud Computing by Bangkit Academy (Google, GoTo, Traveloka). Builds full-stack web applications and applies data analysis skills using Python, SQL, and Excel.",
+                "Finance & Accounting Specialist and Information Systems graduate. Experienced in village financial management using Siskeudes (SPP/SPM, BKU, LRA, APBDes, SPJ), financial reporting, transaction reconciliation, and full-stack web development with Next.js and PostgreSQL.",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Merangin",
@@ -147,15 +153,18 @@ export default function RootLayout({
                 BASE_URL,
               ],
               knowsAbout: [
+                "Finance & Accounting",
+                "Siskeudes",
+                "Village Financial Management",
+                "SPP/SPM",
+                "Financial Reporting",
                 "Next.js",
                 "TypeScript",
                 "PostgreSQL",
                 "Cloud Computing",
-                "Google Cloud Platform",
                 "Python",
                 "SQL",
                 "Data Analysis",
-                "RESTful API",
                 "Web Development",
               ],
             }),

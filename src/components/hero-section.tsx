@@ -61,10 +61,9 @@ export function HeroSection({ name, summary, email, location }: HeroProps) {
       </p>
 
       <div className="flex flex-wrap gap-4 mt-auto">
-        <a>
+        <a
           href={`mailto:${email}`}
-          className=px-6 py-3 bg-[#ccff00] text-black font-bold rounded-xl
-          hover:bg-[#b3e600] transition-colors flex items-center gap-2
+          className="px-6 py-3 bg-[#ccff00] text-black font-bold rounded-xl hover:bg-[#b3e600] transition-colors flex items-center gap-2">
           <Mail className="w-5 h-5" /> Let&apos;s Connect
         </a>
         <div className="px-6 py-3 bg-[#1a1a1a] border border-[#262626] text-zinc-300 font-medium rounded-xl flex items-center gap-2">

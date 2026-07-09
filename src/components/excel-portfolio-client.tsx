@@ -353,7 +353,7 @@ function WorkbookCard({ wb }: { wb: ExcelWorkbook }) {
 
                 {/* Iframe — always in DOM, opacity-driven visibility */}
                 <iframe
-                  src={`https://view.officeapps.live.com/op/embed.aspx?src=https://arihazamie.my.id/excel-files/${wb.fileName}`}
+                  src={`https://view.officeapps.live.com/op/embed.aspx?src=https://arihazamie.online/excel-files/${wb.fileName}`}
                   style={{
                     width: "100%",
                     height: "calc(100vh - 280px)",

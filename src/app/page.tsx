@@ -14,6 +14,7 @@ import {
   FileSpreadsheet,
   Globe,
   MapPin,
+  Users,
 } from "lucide-react";
 import {
   personalInfo,
@@ -35,6 +36,7 @@ const SKILL_ICONS: Record<Skill["iconName"], React.ReactNode> = {
   BarChart3: <BarChart3 className="w-5 h-5" />,
   Database: <Database className="w-5 h-5" />,
   Terminal: <Terminal className="w-5 h-5" />,
+  Users: <Users className="w-5 h-5" />,
 };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────

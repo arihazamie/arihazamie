@@ -13,7 +13,7 @@ export type Experience = {
 
 export type Skill = {
   category: string;
-  iconName: "BarChart3" | "Database" | "Terminal";
+  iconName: "BarChart3" | "Database" | "Terminal" | "Users";
   items: string[];
 };
 
@@ -38,9 +38,10 @@ export const personalInfo = {
   name: "Ari Hazamie",
   title: "Full-Stack Developer · Data Analyst · Finance",
   summary:
-    "Information Systems graduate with hands-on experience in full-stack web development, data analysis, and government financial management. Skilled in building production-ready web apps with Next.js and PostgreSQL, analyzing data with Python, SQL, and Excel, and managing the full financial cycle using Siskeudes — from budget planning (APBDes/RAB) to accountability reporting (LRA, SPJ). Open to opportunities in web development, data analysis, or finance & accounting.",
+    "Information Systems graduate (GPA 3.20/4.00) with direct experience handling high-value financial transactions (Rp100–250 million per quarter) accurately and compliantly — from expenditure authorization and cash withdrawals to bank statement reconciliation. Experienced in direct public service through Direct Cash Assistance (BLT) disbursement, managing the full village financial cycle with Siskeudes, and building production-ready web apps with Next.js and PostgreSQL. Selected as 1 of 4,636 participants out of 45,000+ applicants nationwide for Bangkit Academy (Google, GoTo, Traveloka). Open to opportunities in finance & accounting, data analysis, or web development.",
   contact: {
     email: "arihzmiutama@gmail.com",
+    phone: "+6282297709583",
     location: "Merangin, Jambi",
     github: "github.com/arihazamie",
     linkedin: "linkedin.com/in/arihazamie",
@@ -56,11 +57,31 @@ export const experience: Experience[] = [
     period: "Oct 2025 – Apr 2026",
     location: "Merangin, Jambi",
     description: [
-      "Managed the village financial cycle end-to-end using Siskeudes — including budget planning (RAB/APBDes), expenditure authorization (SPP/SPM), maintenance of the General Cash Book (BKU), and quarterly preparation of the Budget Implementation Report (LRA).",
-      "Managed village fund disbursements through the banking system every quarter with transaction values ranging from Rp100 million to Rp250 million, including check withdrawals and bank statement reconciliations.",
-      "Prepared Accountability Reports (SPJ) and village financial statements as a form of fiscal accountability to the local government, ensuring all documents comply with applicable reporting standards.",
-      "Managed the disbursement and distribution of Direct Cash Assistance (BLT) to eligible beneficiaries in accordance with applicable regulations.",
+      "Managed the disbursement and distribution of Direct Cash Assistance (BLT) to eligible beneficiaries, prioritizing friendly, accurate, and compliant public service.",
+      "Handled village fund disbursements through the banking system every quarter with transaction values ranging from Rp100 million to Rp250 million, including check withdrawals and bank statement reconciliations.",
+      "Managed the village financial cycle end-to-end using Siskeudes — including budget planning (RAB/APBDes), expenditure authorization (SPP/SPM), and maintenance of the General Cash Book (BKU) with zero discrepancies.",
+      "Prepared quarterly Budget Implementation Reports (LRA) and Accountability Reports (SPJ) as a form of fiscal accountability to the local government, maintaining a high standard of reporting accuracy and compliance.",
       "Systematically cross-verified financial data against transaction evidence to maintain data integrity and meet local government audit standards.",
+    ],
+  },
+  {
+    title: "Cloud Computing Lead — Eco Sense (Capstone Project)",
+    company: "Bangkit Academy (MSIB)",
+    period: "Nov 2024 – Dec 2024",
+    location: "Remote (Online)",
+    description: [
+      "Led a 3-person Cloud Computing team within a 7-person cross-divisional capstone project, coordinating closely with the Machine Learning and Mobile Development teams to keep system integration on plan and on schedule.",
+      "Practiced cross-functional communication and teamwork while ensuring backend and cloud infrastructure aligned with ML and mobile deliverables.",
+    ],
+  },
+  {
+    title: "Full Stack Web Developer — Freelance Projects",
+    company:
+      "Research Management System (LPPM UPI YPTK) & Geopark Merangin Information System",
+    period: "2024 – 2025",
+    location: "Remote",
+    description: [
+      "Built web-based information systems end-to-end, including structured database design and production deployment, for an institutional research management platform and a geospatial information system for Geopark Merangin.",
     ],
   },
   {
@@ -116,9 +137,20 @@ export const skills: Skill[] = [
       "APBDes",
       "SPJ",
       "BLT",
+      "Cash Handling",
       "Financial Reporting",
       "Transaction Reconciliation",
       "Accurate 5 Desktop",
+    ],
+  },
+  {
+    category: "Service & Communication",
+    iconName: "Users",
+    items: [
+      "Public Service",
+      "Cross-team Coordination",
+      "Stakeholder Reporting",
+      "Teamwork",
     ],
   },
 ];
@@ -132,7 +164,7 @@ export const education: Education[] = [
     degree: "Bachelor of Information Systems — GPA 3.20 / 4.00",
     period: "Aug 2021 – Oct 2025",
     description: [
-      "Strengthened skills in system development, data management, and problem-solving through a combination of academic study and practical projects throughout the program.",
+      "Built a foundation in database management, information systems, and data analysis, combined with hands-on experience managing village government finances during the program — sharpening the ability to work with numbers accurately, systematically, and to reporting standards.",
     ],
   },
   {
@@ -141,6 +173,7 @@ export const education: Education[] = [
     degree: "Cloud Computing Learning Path",
     period: "Sep 2024 – Dec 2024",
     description: [
+      'Selected as 1 of 4,636 participants out of 45,000+ applicants from 400+ universities across Indonesia (~10% acceptance rate). Completed the program as a Full Graduate with capstone status "Finished," scoring above 90 on most learning modules.',
       "Completed an industry-focused intensive program centered on cloud computing, backend development, and DevOps practices using Google Cloud Platform. Developed RESTful APIs, deployed applications using Cloud Run, and managed cloud-based databases in a team-based capstone project.",
     ],
   },
