@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://arihazamie.online/sitemap.xml",
+    sitemap: "https://www.arihazamie.online/sitemap.xml",
   };
 }

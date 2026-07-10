@@ -52,6 +52,7 @@ export function HeroSection({ name, summary, email, location }: HeroProps) {
       </Badge>
 
       <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+        <span className="sr-only">Ari Hazamie – </span>
         Developer. Analyst. <br />
         <span className="text-[#ccff00]">Finance.</span>
       </h1>
