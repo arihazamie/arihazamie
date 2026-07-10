@@ -59,10 +59,9 @@ export const metadata: Metadata = {
   // ── Icons (favicon & app icons) ─────────────────────────────────────
   icons: {
     icon: [
-      { url: "/favicon.gif", type: "image/gif" },
-      { url: "/favicon.ico", sizes: "any" }, // fallback statis untuk browser yang tidak animasi GIF
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.gif", type: "image/gif" },
     ],
     apple: "/apple-touch-icon.png",
   },
