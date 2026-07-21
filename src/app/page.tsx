@@ -91,7 +91,7 @@ export default function DarkBentoPortfolio() {
             {/* CTA card — transform-gpu so scale runs on compositor thread */}
             <div className="bg-[#ccff00] rounded-[2rem] p-8 text-black flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer transform-gpu">
               <h3 className="text-2xl font-bold leading-tight mb-4">
-                Need a dev, analyst, <br /> or finance pro?
+                Need a dev, analyst, <br /> or problem-solver?
               </h3>
               <a
                 href={`mailto:${personalInfo.contact.email}`}

@@ -36,9 +36,9 @@ export type Certificate = {
 
 export const personalInfo = {
   name: "Ari Hazamie",
-  title: "Full-Stack Developer · Data Analyst · Finance",
+  title: "Full-Stack Developer · Data Analyst",
   summary:
-    "Information Systems graduate (GPA 3.20/4.00) with direct experience handling high-value financial transactions (Rp100–250 million per quarter) accurately and compliantly — from expenditure authorization and cash withdrawals to bank statement reconciliation. Experienced in direct public service through Direct Cash Assistance (BLT) disbursement, managing the full village financial cycle with Siskeudes, and building production-ready web apps with Next.js and PostgreSQL. Selected as 1 of 4,636 participants out of 45,000+ applicants nationwide for Bangkit Academy (Google, GoTo, Traveloka). Open to opportunities in finance & accounting, data analysis, or web development.",
+    "Information Systems graduate with hands-on experience across web development, data analysis, and financial administration. Built production-ready web applications with Next.js and PostgreSQL, and managed the full financial cycle for a village government — including high-value fund disbursements (Rp100–250 million per quarter), budget reporting, and direct public service through Direct Cash Assistance (BLT) distribution. Selected as 1 of 4,636 participants out of 45,000+ applicants nationwide for Bangkit Academy (Google, GoTo, Traveloka). Honest, detail-oriented, and driven by data accuracy.",
   contact: {
     email: "arihzmiutama@gmail.com",
     phone: "+6282297709583",
@@ -161,7 +161,7 @@ export const education: Education[] = [
   {
     institution: "Universitas Putra Indonesia YPTK Padang",
     location: "Padang, West Sumatra",
-    degree: "Bachelor of Information Systems — GPA 3.20 / 4.00",
+    degree: "Bachelor of Information Systems",
     period: "Aug 2021 – Oct 2025",
     description: [
       "Built a foundation in database management, information systems, and data analysis, combined with hands-on experience managing village government finances during the program — sharpening the ability to work with numbers accurately, systematically, and to reporting standards.",
@@ -173,14 +173,14 @@ export const education: Education[] = [
     degree: "Cloud Computing Learning Path",
     period: "Sep 2024 – Dec 2024",
     description: [
-      'Selected as 1 of 4,636 participants out of 45,000+ applicants from 400+ universities across Indonesia (~10% acceptance rate). Completed the program as a Full Graduate with capstone status "Finished," scoring above 90 on most learning modules.',
+      'Selected as 1 of 4,636 participants out of 45,000+ applicants from 400+ universities across Indonesia (~10% acceptance rate). Completed the program as a Full Graduate with capstone status "Finished."',
       "Completed an industry-focused intensive program centered on cloud computing, backend development, and DevOps practices using Google Cloud Platform. Developed RESTful APIs, deployed applications using Cloud Run, and managed cloud-based databases in a team-based capstone project.",
     ],
   },
   {
     institution: "SMK Negeri 1 Merangin",
     location: "Bangko, Merangin",
-    degree: "Computer Engineering & Computer Science — Multimedia | 84.15",
+    degree: "Computer Engineering & Computer Science — Multimedia",
     period: "Jun 2018 – Jun 2021",
     description: [
       "Studied graphic design using CorelDRAW, poster design, and short film production. Completed the Skills Competency Test (UKK) with a focus on practical photography.",
